@@ -1,0 +1,742 @@
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.personal-information-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.topbar {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    flex-shrink: 0;
+}
+.row-layout {
+    display: flex;
+}
+.group_1 {
+    background-color: hsla(var(--ig-secondary-100));
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    gap: 32px;
+    position: relative;
+    padding: 10px 10px 10px 0;
+    height: 72px;
+    min-width: 0;
+    min-height: 15px;
+    max-height: 72px;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+.group_2 {
+    background-color: hsla(var(--ig-secondary-100));
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 5px;
+    width: 123px;
+    height: 71px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 123px;
+    max-height: 71px;
+}
+.round-icon-button-1 {
+    border-radius: 100px;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    margin: 0 4px 0 0;
+    padding: 12px;
+    width: 63px;
+    min-width: 63px;
+    max-width: 63px;
+}
+.group_3 {
+    background-color: hsla(var(--ig-secondary-100));
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 5px;
+    width: 171px;
+    height: 71px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 171px;
+    max-height: 71px;
+}
+.group_4 {
+    background-color: hsla(var(--ig-secondary-100));
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 16px;
+    width: 150px;
+    height: 394px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 150px;
+    max-height: 394px;
+}
+.group_5 {
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 5px;
+    position: relative;
+    width: 170px;
+    height: 234px;
+    min-width: 170px;
+    min-height: 234px;
+    max-width: 170px;
+    max-height: 234px;
+}
+.group_6 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    padding: 5px;
+    width: 169px;
+    height: 57px;
+    min-width: 169px;
+    min-height: 57px;
+    max-width: 169px;
+    max-height: 57px;
+}
+.group_7 {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 2px 0 0 8px;
+    width: 156px;
+    min-width: 156px;
+    max-width: 156px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_8 {
+    background-color: hsla(var(--ig-secondary-100));
+    border-color: hsla(var(--ig-secondary-200));
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 15px;
+    left: 0;
+    position: relative;
+    margin: 0 0 0 -10px;
+    width: 133px;
+    height: 49px;
+    min-width: 133px;
+    min-height: 49px;
+    max-width: 133px;
+    max-height: 49px;
+}
+.group_9 {
+    background-color: hsla(var(--ig-secondary-100));
+    border-color: hsla(var(--ig-secondary-200));
+    border-style: solid;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 15px;
+    left: 0;
+    position: relative;
+    margin: 0 0 0 -10px;
+    width: 134px;
+    height: 49px;
+    min-width: 134px;
+    min-height: 49px;
+    max-width: 134px;
+    max-height: 49px;
+}
+.group_10 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    height: 48px;
+    min-height: 48px;
+    max-height: 48px;
+}
+.group_11 {
+    justify-content: flex-end;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 5px 0;
+    width: 103px;
+    height: 52px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 103px;
+    max-height: 52px;
+}
+.group_12 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    max-height: 50px;
+}
+.group_13 {
+    justify-content: flex-end;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 4px;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+}
+.profile-user-1 {
+    background-color: hsla(var(--ig-primary-600));
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    min-width: 40px;
+    min-height: 40px;
+}
+.group_14 {
+    justify-content: flex-end;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    width: 242px;
+    height: 21px;
+    min-width: 242px;
+    min-height: 21px;
+    max-width: 242px;
+    max-height: 21px;
+}
+.group_15 {
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_16 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 12px;
+    min-width: 40px;
+    min-height: 40px;
+}
+.group_17 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_18 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.avatar {
+    background-color: hsla(var(--ig-primary-600));
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+}
+.circle {
+    background-color: hsla(var(--ig-success-500));
+    border-color: hsla(var(--ig-surface-500));
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    left: 34px;
+    top: 34px;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    min-height: 14px;
+    max-width: 14px;
+    max-height: 14px;
+}
+.group_19 {
+    background-color: hsla(var(--ig-surface-500));
+    border-radius: 28px;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    margin: 0 8px;
+    padding: 4px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.settings-button {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    padding: 12px 20px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.language-button {
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    padding: 12px 20px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_20 {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    min-width: 50px;
+}
+.group_21 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    min-width: 50px;
+}
+.group_22 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 5px 6px;
+    min-width: 50px;
+}
+.deivder {
+    background-color: hsla(var(--ig-gray-400));
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    width: 1px;
+    height: 8px;
+    min-width: 1px;
+    min-height: 8px;
+    max-width: 1px;
+    max-height: 8px;
+}
+.group_23 {
+    justify-content: flex-end;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+}
+.group_24 {
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+}
+.group_25 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 0;
+    position: relative;
+    padding: 16px 0 0;
+    min-width: 50px;
+    min-height: 50px;
+}
+.category-2 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    width: 91px;
+    height: 112px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 91px;
+    max-height: 112px;
+}
+.group_26 {
+    background-color: hsla(var(--ig-secondary-400));
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 48px;
+    max-height: 48px;
+}
+.group_27 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 0 12px 6px;
+    min-width: 0;
+    min-height: 0;
+    align-self: stretch;
+}
+.group_28 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 0;
+    position: relative;
+    padding: 0 0 16px;
+    height: 147px;
+    min-width: 50px;
+    min-height: 50px;
+    max-height: 147px;
+}
+.category-4 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    padding: 10px 0 0;
+    width: 91px;
+    height: 112px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 91px;
+    max-height: 112px;
+}
+.group_29 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    padding: 16px;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_30 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_31 {
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    width: 1908px;
+    height: 424px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 1908px;
+    max-height: 424px;
+}
+.group_32 {
+    justify-content: flex-end;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+}
+.group_33 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    margin: -200px 0 0;
+    padding: 16px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_34 {
+    background-color: hsla(var(--ig-secondary-100));
+    background-image: url("assets/kpi-hrate.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 13px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 4px;
+    position: relative;
+    padding: 20px;
+    min-width: 200px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_35 {
+    justify-content: flex-end;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 4px;
+    width: 79px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 79px;
+    max-height: 50px;
+}
+.profile-user {
+    background-color: hsla(var(--ig-primary-600));
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    min-width: 45px;
+    min-height: 45px;
+}
+.group_36 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+}
+.nav-drawer {
+    min-width: min-content;
+    min-height: 0;
+    max-width: 173px;
+    flex-shrink: 0;
+}
+.nav-drawer::part(main) {
+    width: 173px;
+}
+.icon {
+    --size: 24px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+.image {
+    object-fit: cover;
+    width: 40px;
+    height: 36px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 40px;
+    max-height: 36px;
+    flex-shrink: 0;
+}
+.image_1 {
+    object-fit: contain;
+    width: 30px;
+    height: 28px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 30px;
+    max-height: 28px;
+    align-self: center;
+    flex-shrink: 0;
+}
+.text {
+    color: hsla(var(--ig-gray-900));
+    margin: 0 0 0 -15px;
+    width: 105px;
+    height: max-content;
+    min-width: min-content;
+    max-width: 105px;
+}
+.text_1 {
+    color: hsla(var(--ig-gray-900));
+    margin: 0 0 0 -10px;
+    width: 105px;
+    height: max-content;
+    min-width: min-content;
+    max-width: 105px;
+}
+.image_2 {
+    object-fit: contain;
+    margin: 0 0 0 -20px;
+    width: 86px;
+    height: 36px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 86px;
+    max-height: 36px;
+    flex-shrink: 0;
+}
+.icon_1 {
+    --size: 36px;
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+}
+.text_2 {
+    color: hsla(var(--ig-surface-500));
+    height: max-content;
+    min-width: min-content;
+}
+.icon_2 {
+    --size: 18px;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: hsla(var(--ig-gray-900));
+}
+.text_3 {
+    text-align: center;
+    color: hsla(var(--ig-gray-900));
+    height: max-content;
+    min-width: min-content;
+    align-self: center;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.text_4 {
+    color: hsla(var(--ig-gray-900));
+    height: max-content;
+    min-width: min-content;
+}
+.text_5 {
+    color: hsla(var(--ig-gray-700));
+    height: max-content;
+    min-width: min-content;
+}
+.image_3 {
+    object-fit: cover;
+    height: 20px;
+    min-width: 0;
+    min-height: 0;
+    max-height: 20px;
+    flex-shrink: 0;
+}
+.text_6 {
+    height: max-content;
+    min-width: min-content;
+}
+.text_7 {
+    text-align: center;
+    color: hsla(var(--ig-gray-600));
+    height: max-content;
+    min-width: min-content;
+}
+.image_4 {
+    object-fit: cover;
+    width: 20px;
+    height: 20px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 20px;
+    max-height: 20px;
+    flex-shrink: 0;
+}
+.image_5 {
+    object-fit: contain;
+    width: 207px;
+    height: 54px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 207px;
+    max-height: 54px;
+    flex-shrink: 0;
+}
+.image_6 {
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 32px;
+    max-height: 32px;
+    flex-shrink: 0;
+}
+.text_8 {
+    text-align: center;
+    height: max-content;
+    min-width: min-content;
+}
+.h3 {
+    text-align: center;
+    position: relative;
+    margin: 0 0 8px;
+    width: 228px;
+    height: max-content;
+    min-width: min-content;
+    max-width: 228px;
+}
+.text_9 {
+    text-align: center;
+    margin: 0 0 8px;
+    width: 327px;
+    height: max-content;
+    min-width: min-content;
+    max-width: 327px;
+}
+.button {
+    --ig-size: var(--ig-size-medium);
+    height: max-content;
+}
+.button::part(base) {
+    color: hsla(var(--ig-primary-500));
+    border-color: hsla(var(--ig-primary-500));
+}

@@ -1,0 +1,1088 @@
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.banking-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.row-layout {
+    display: flex;
+}
+.topbar {
+    background-color: transparent;
+    justify-content: space-between;
+    align-items: center;
+    align-content: stretch;
+    gap: 50px;
+    position: relative;
+    padding: 10px 10px 10px 0;
+    height: 72px;
+    min-width: 0;
+    min-height: 15px;
+    max-height: 72px;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+.group {
+    background-color: transparent;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 5px;
+    width: 103px;
+    height: 71px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 103px;
+    max-height: 71px;
+}
+.round-icon-button-1 {
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    margin: 0 4px 0 0;
+    padding: 12px;
+    width: 63px;
+    min-width: 63px;
+    max-width: 63px;
+}
+.group_1 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    height: 48px;
+    min-height: 48px;
+    max-height: 48px;
+}
+.group_2 {
+    background-color: hsla(var(--ig-secondary-100));
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    position: relative;
+    padding: 0 16px 16px 0;
+    width: 150px;
+    height: 423px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 150px;
+    max-height: 423px;
+}
+.group_3 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 5px;
+    position: relative;
+    width: 172px;
+    height: 346px;
+    min-width: 172px;
+    min-height: 346px;
+    max-width: 172px;
+    max-height: 346px;
+}
+.group_4 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    padding: 0 5px 5px;
+    width: 173px;
+    height: 78px;
+    min-width: 173px;
+    min-height: 78px;
+    max-width: 173px;
+    max-height: 78px;
+}
+.group_5 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    width: 164px;
+    min-width: 164px;
+    max-width: 164px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_6 {
+    background-color: hsla(var(--ig-secondary-600));
+    border-color: hsla(var(--ig-secondary-200));
+    border-style: solid;
+    border-radius: 10px;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    left: 0;
+    position: relative;
+    padding: 8px;
+    width: 151px;
+    height: 39px;
+    min-width: 151px;
+    min-height: 39px;
+    max-width: 151px;
+    max-height: 39px;
+}
+.group_7 {
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 7px;
+    position: relative;
+    padding: 0 5px 5px;
+    width: 158px;
+    height: 250px;
+    min-width: 158px;
+    min-height: 250px;
+    max-width: 158px;
+    max-height: 250px;
+    align-self: center;
+}
+.group_8 {
+    background-color: transparent;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 8px;
+    width: 145px;
+    height: 38px;
+    min-width: 145px;
+    min-height: 38px;
+    max-width: 145px;
+    max-height: 38px;
+}
+.group_9 {
+    background-color: transparent;
+    border-radius: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 8px;
+    width: 145px;
+    height: 38px;
+    min-width: 145px;
+    min-height: 38px;
+    max-width: 145px;
+    max-height: 38px;
+}
+.group_10 {
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 8px;
+    width: 153px;
+    height: 38px;
+    min-width: 153px;
+    min-height: 38px;
+    max-width: 153px;
+    max-height: 38px;
+    align-self: center;
+}
+.group_11 {
+    border-radius: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 8px;
+    width: 144px;
+    height: 38px;
+    min-width: 144px;
+    min-height: 38px;
+    max-width: 144px;
+    max-height: 38px;
+    align-self: center;
+}
+.group_12 {
+    border-radius: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 8px;
+    width: 146px;
+    height: 38px;
+    min-width: 146px;
+    min-height: 38px;
+    max-width: 146px;
+    max-height: 38px;
+    align-self: center;
+}
+.group_13 {
+    justify-content: flex-end;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 5px 0;
+    width: 103px;
+    height: 52px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 103px;
+    max-height: 52px;
+}
+.group_14 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    max-height: 50px;
+}
+.group_15 {
+    justify-content: flex-end;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 4px;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
+}
+.profile-user {
+    background-color: hsla(var(--ig-primary-600));
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    min-width: 40px;
+    min-height: 40px;
+}
+.group_16 {
+    justify-content: flex-end;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+}
+.group_17 {
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+}
+.group_18 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 0;
+    position: relative;
+    padding: 16px 0 0;
+    min-width: 50px;
+    min-height: 50px;
+}
+.category-2 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    width: 91px;
+    height: 112px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 91px;
+    max-height: 112px;
+}
+.group_19 {
+    background-color: hsla(var(--ig-secondary-400));
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 48px;
+    max-height: 48px;
+}
+.group_20 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 0 12px 6px;
+    min-width: 0;
+    min-height: 0;
+    align-self: stretch;
+}
+.group_21 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 0;
+    position: relative;
+    padding: 0 0 16px;
+    height: 147px;
+    min-width: 50px;
+    min-height: 50px;
+    max-height: 147px;
+}
+.category-4 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    padding: 10px 0 0;
+    width: 91px;
+    height: 112px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 91px;
+    max-height: 112px;
+}
+.group_22 {
+    justify-content: flex-end;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    width: 242px;
+    height: 21px;
+    min-width: 242px;
+    min-height: 21px;
+    max-width: 242px;
+    max-height: 21px;
+}
+.group_23 {
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_24 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 12px;
+    min-width: 40px;
+    min-height: 40px;
+}
+.group_25 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_26 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.avatar {
+    background-color: hsla(var(--ig-primary-600));
+    border-radius: 100px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+}
+.circle {
+    background-color: hsla(var(--ig-success-500));
+    border-color: hsla(var(--ig-surface-500));
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 10px;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    left: 34px;
+    top: 34px;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    min-width: 14px;
+    min-height: 14px;
+    max-width: 14px;
+    max-height: 14px;
+}
+.group_27 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_28 {
+    background-color: hsla(var(--ig-surface-500));
+    border-radius: 28px;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    margin: 0 8px;
+    padding: 4px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.settings-button-3 {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    padding: 12px 20px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.language-button {
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    padding: 12px 20px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_29 {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    min-width: 50px;
+}
+.group_30 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    min-width: 50px;
+}
+.group_31 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 5px 6px;
+    min-width: 50px;
+}
+.deivder {
+    background-color: hsla(var(--ig-gray-400));
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    width: 1px;
+    height: 8px;
+    min-width: 1px;
+    min-height: 8px;
+    max-width: 1px;
+    max-height: 8px;
+}
+.group_32 {
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    position: relative;
+    min-width: 50px;
+    min-height: 50px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.sidenav {
+    background-color: transparent;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    padding: 0 16px 16px 15px;
+    width: 79px;
+    height: 721px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 150px;
+    max-height: 721px;
+}
+.group_33 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 5px;
+    position: relative;
+    width: 79px;
+    height: 346px;
+    min-width: 79px;
+    min-height: 346px;
+    max-width: 79px;
+    max-height: 346px;
+}
+.group_34 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    padding: 0 5px 5px;
+    width: 74px;
+    height: 78px;
+    min-width: 74px;
+    min-height: 78px;
+    max-width: 74px;
+    max-height: 78px;
+}
+.group_35 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    width: 63px;
+    min-width: 63px;
+    max-width: 63px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_36 {
+    background-color: hsla(var(--ig-secondary-600));
+    border-color: hsla(var(--ig-secondary-200));
+    border-style: solid;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    left: 0;
+    position: relative;
+    padding: 8px;
+    width: 43px;
+    height: 39px;
+    min-width: 43px;
+    min-height: 39px;
+    max-width: 43px;
+    max-height: 39px;
+}
+.group_37 {
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 7px;
+    position: relative;
+    padding: 0 5px 5px;
+    width: 63px;
+    height: 250px;
+    min-width: 63px;
+    min-height: 250px;
+    max-width: 63px;
+    max-height: 250px;
+    align-self: center;
+}
+.group_38 {
+    background-color: transparent;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 8px;
+    width: 49px;
+    height: 38px;
+    min-width: 49px;
+    min-height: 38px;
+    max-width: 49px;
+    max-height: 38px;
+}
+.group_39 {
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    gap: 10px;
+    position: relative;
+    padding: 8px;
+    width: 49px;
+    height: 38px;
+    min-width: 49px;
+    min-height: 38px;
+    max-width: 49px;
+    max-height: 38px;
+    align-self: center;
+}
+.group_40 {
+    justify-content: flex-start;
+    align-items: flex-end;
+    align-content: flex-start;
+    overflow: hidden;
+    position: relative;
+    padding: 0 0 16px 5px;
+    height: 721px;
+    min-width: 50px;
+    min-height: 50px;
+    max-height: 721px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_41 {
+    background-color: transparent;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: stretch;
+    gap: 32px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 0 22px;
+    height: 696px;
+    min-width: 0;
+    min-height: 15px;
+    max-height: 696px;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+.group_42 {
+    background-color: hsla(var(--ig-surface-500));
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    padding: 0 16px 16px;
+    height: 569px;
+    min-width: 50px;
+    min-height: 50px;
+    max-height: 569px;
+}
+.group_43 {
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    margin: 30px 60px 0 0;
+    padding: 0 0 10px;
+}
+.group_44 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+}
+.group_45 {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 20px;
+    position: relative;
+    margin: 0 60px 0 0;
+    padding: 20px 0 10px 20px;
+    min-width: 50px;
+    min-height: 50px;
+    flex-shrink: 0;
+}
+.group_46 {
+    justify-content: space-between;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    width: 263px;
+    height: 25px;
+    min-width: 263px;
+    min-height: 25px;
+    max-width: 263px;
+    max-height: 25px;
+}
+.group_47 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    position: relative;
+    width: 25px;
+    min-width: 25px;
+    max-width: 25px;
+}
+.group_48 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 20px;
+    position: relative;
+    margin: 20px 60px 60px 0;
+    min-width: 50px;
+    min-height: 50px;
+    flex-shrink: 0;
+}
+.group_49 {
+    background-color: hsla(var(--ig-primary-600));
+    background-image: url("assets/Rectangle 22.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 13px;
+    justify-content: center;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 4px;
+    position: relative;
+    padding: 20px;
+    min-width: 280px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_50 {
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: flex-start;
+    position: relative;
+}
+.group_51 {
+    justify-content: flex-start;
+    align-items: baseline;
+    align-content: flex-start;
+    gap: 4px;
+    position: relative;
+    min-width: 50px;
+}
+.group_52 {
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: flex-start;
+    position: relative;
+    width: 311px;
+    min-width: 311px;
+    max-width: 311px;
+}
+.group_53 {
+    background-color: hsla(var(--ig-secondary-400));
+    background-image: url("assets/kpi-bp.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-color: hsla(var(--ig-gray-400));
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 13px;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 4px;
+    position: relative;
+    padding: 20px;
+    min-width: 280px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.group_54 {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    width: 316px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 316px;
+    max-height: 50px;
+}
+.group_55 {
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    position: relative;
+}
+.group_56 {
+    justify-content: space-between;
+    align-items: baseline;
+    align-content: flex-start;
+    position: relative;
+    width: 313px;
+    min-width: 313px;
+    max-width: 313px;
+}
+.nav-drawer {
+    min-width: min-content;
+    min-height: 0;
+    max-width: 173px;
+    flex-shrink: 0;
+}
+.nav-drawer::part(main) {
+    width: 173px;
+}
+.icon {
+    --size: 24px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+.image {
+    object-fit: contain;
+    margin: 0 0 0 -20px;
+    width: 108px;
+    height: 46px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 108px;
+    max-height: 46px;
+    flex-shrink: 0;
+}
+.image_1 {
+    object-fit: fill;
+    width: 35px;
+    height: 31px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 35px;
+    max-height: 31px;
+    align-self: center;
+    flex-shrink: 0;
+}
+.text {
+    color: hsla(var(--ig-gray-900));
+    height: max-content;
+    min-width: min-content;
+}
+.image_2 {
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 30px;
+    max-height: 30px;
+    flex-shrink: 0;
+}
+.image_3 {
+    object-fit: fill;
+    width: 25px;
+    height: 25px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 25px;
+    max-height: 25px;
+    flex-shrink: 0;
+}
+.text_1 {
+    color: hsla(var(--ig-gray-900));
+    width: 97px;
+    height: max-content;
+    min-width: min-content;
+    max-width: 97px;
+}
+.icon_1 {
+    --size: 36px;
+    font-size: 36px;
+    width: 36px;
+    height: 36px;
+}
+.text_2 {
+    color: hsla(var(--ig-surface-500));
+    height: max-content;
+    min-width: min-content;
+}
+.icon_2 {
+    --size: 18px;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: hsla(var(--ig-gray-900));
+}
+.image_4 {
+    object-fit: contain;
+    width: 207px;
+    height: 54px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 207px;
+    max-height: 54px;
+    flex-shrink: 0;
+}
+.image_5 {
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 32px;
+    max-height: 32px;
+    flex-shrink: 0;
+}
+.text_3 {
+    text-align: center;
+    height: max-content;
+    min-width: min-content;
+}
+.text_4 {
+    text-align: center;
+    color: hsla(var(--ig-gray-900));
+    height: max-content;
+    min-width: min-content;
+    align-self: center;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.text_5 {
+    color: hsla(var(--ig-gray-700));
+    height: max-content;
+    min-width: min-content;
+}
+.image_6 {
+    object-fit: cover;
+    height: 20px;
+    min-width: 0;
+    min-height: 0;
+    max-height: 20px;
+    flex-shrink: 0;
+}
+.text_6 {
+    height: max-content;
+    min-width: min-content;
+}
+.text_7 {
+    text-align: center;
+    color: hsla(var(--ig-gray-600));
+    height: max-content;
+    min-width: min-content;
+}
+.image_7 {
+    object-fit: cover;
+    width: 20px;
+    height: 20px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 20px;
+    max-height: 20px;
+    flex-shrink: 0;
+}
+.image_8 {
+    object-fit: fill;
+    width: 30px;
+    height: 30px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 30px;
+    max-height: 30px;
+    align-self: center;
+    flex-shrink: 0;
+}
+.image_9 {
+    object-fit: cover;
+    width: 25px;
+    height: 25px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 25px;
+    max-height: 25px;
+    flex-shrink: 0;
+}
+.h3 {
+    text-align: center;
+    position: relative;
+    margin: 0 0 8px;
+    height: max-content;
+    min-width: min-content;
+}
+.h6 {
+    text-align: center;
+    margin: 0 0 8px;
+    width: 262px;
+    height: max-content;
+    min-width: min-content;
+    max-width: 262px;
+}
+.text_8 {
+    color: hsla(var(--ig-gray-700));
+    margin: 0 0 0 10px;
+    width: 216px;
+    height: max-content;
+    min-width: min-content;
+    max-width: 216px;
+}
+.icon_3 {
+    --size: 24px;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: hsla(var(--ig-gray-800));
+}
+.image_10 {
+    object-fit: cover;
+    width: 59px;
+    height: 58px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 59px;
+    max-height: 58px;
+    flex-shrink: 0;
+}
+.content {
+    color: hsla(var(--ig-secondary-100));
+    height: max-content;
+    min-width: min-content;
+}
+.image_11 {
+    object-fit: cover;
+    width: 245px;
+    height: 23px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 245px;
+    max-height: 23px;
+    flex-shrink: 0;
+}
+.content_1 {
+    color: hsla(var(--ig-gray-800));
+    height: max-content;
+    min-width: min-content;
+}
+.image_12 {
+    object-fit: cover;
+    width: 245px;
+    height: 24px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 245px;
+    max-height: 24px;
+    flex-shrink: 0;
+}
+.button {
+    --ig-size: var(--ig-size-medium);
+    height: max-content;
+}
+.button::part(base) {
+    color: hsla(var(--ig-primary-500));
+    border-color: hsla(var(--ig-primary-500));
+}

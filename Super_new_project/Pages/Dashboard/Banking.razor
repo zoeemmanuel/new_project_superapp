@@ -1,0 +1,346 @@
+@page "/dashboard/banking"
+@inject NavigationManager NavigationManager
+
+<div class="column-layout banking-container">
+    <div class="row-layout topbar">
+        <div class="row-layout group">
+            <div class="row-layout round-icon-button-1">
+                <IgbNavDrawer @onclick="@(e => _navDrawer5!.ToggleAsync())" @ref="_navDrawer5" class="nav-drawer" banking-scope>
+                    <div class="row-layout group">
+                        <div class="row-layout round-icon-button-1">
+                            <span class="material-icons icon">
+                                menu
+                            </span>
+                        </div>
+                        <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="row-layout group_1">
+                            <img src="assets/Bankinglogo.svg" class="image" />
+                        </div>
+                    </div>
+                    <div class="column-layout group_2">
+                        <div class="column-layout group_3">
+                            <div class="column-layout group_4">
+                                <div class="row-layout group_5">
+                                    <div class="row-layout group_6">
+                                        <img src="assets/home-03.svg" class="image_1" />
+                                        <p class="typography__body-2 text">
+                                            Home
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column-layout group_7">
+                                <div class="row-layout group_8">
+                                    <img src="assets/transfer 1.svg" class="image_2" />
+                                    <p class="typography__body-2 text">
+                                        Transactions
+                                    </p>
+                                </div>
+                                <div class="row-layout group_9">
+                                    <img src="assets/user 3 1.svg" class="image_3" />
+                                    <p class="typography__body-2 text">
+                                        Accounts
+                                    </p>
+                                </div>
+                                <div class="row-layout group_10">
+                                    <img src="assets/credit-card 1.svg" class="image_2" />
+                                    <p class="typography__body-2 text_1">
+                                        Credit Cards
+                                    </p>
+                                </div>
+                                <div class="row-layout group_11">
+                                    <img src="assets/loan 1.svg" class="image_2" />
+                                    <p class="typography__body-2 text">
+                                        Home
+                                    </p>
+                                </div>
+                                <div class="row-layout group_12">
+                                    <img src="assets/756ddd79607e479b80aba42398f4c7004c9988bd.SVG" class="image_2" />
+                                    <p class="typography__body-2 text">
+                                        Settings
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </IgbNavDrawer>
+                <span @onclick="@(e => _navDrawer5!.ToggleAsync())" class="material-icons icon">
+                    menu
+                </span>
+            </div>
+            <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="row-layout group_1">
+                <img src="assets/Bankinglogo.svg" class="image" />
+            </div>
+        </div>
+        <div class="row-layout group_13">
+            <div class="row-layout group_14">
+                <span @onclick="@(e => _overview4!.ToggleAsync())" class="material-icons icon_1">
+                    drag_indicator
+                </span>
+            </div>
+            <div class="row-layout group_15">
+                <div @onclick="@(e => _profileoverview5!.ToggleAsync())" class="row-layout profile-user">
+                    <p class="typography__body-1 text_2">
+                        Z
+                    </p>
+                </div>
+            </div>
+            <IgbDialog CloseOnOutsideClick="true" @ref="_overview4">
+                <h5 slot="title"></h5>
+                <div class="row-layout group_16">
+                    <span @onclick="@(e => _overview4!.ToggleAsync())" class="material-icons icon_2">
+                        close
+                    </span>
+                </div>
+                <div class="row-layout group_17">
+                    <img src="assets/goowid-logo.svg" @onclick="@(e => Navigate("/dashboard/homepage"))" class="image_4" />
+                </div>
+                <div class="row-layout group_18">
+                    <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="column-layout category-2">
+                        <div class="row-layout group_19">
+                            <img src="assets/searchengine_icon.svg" class="image_5" />
+                        </div>
+                        <div class="row-layout group_20">
+                            <p class="typography__body-2 text_3">
+                                Search
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/search"))" class="column-layout category-2">
+                        <div class="row-layout group_19">
+                            <img src="assets/AIsearch.svg" class="image_5" />
+                        </div>
+                        <div class="row-layout group_20">
+                            <p class="typography__body-2 text_3">
+                                AI Assist
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/chat"))" class="column-layout category-2">
+                        <div class="row-layout group_19">
+                            <img src="assets/Chats.svg" class="image_5" />
+                        </div>
+                        <div class="row-layout group_20">
+                            <p class="typography__body-2 text_3">
+                                Chat
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-layout group_21">
+                    <div @onclick="@(e => Navigate("/dashboard/timesheet"))" class="column-layout category-2">
+                        <div class="row-layout group_19">
+                            <img src="assets/timesheet.svg" class="image_5" />
+                        </div>
+                        <div class="row-layout group_20">
+                            <p class="typography__body-2 text_3">
+                                Timesheet
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/social_media"))" class="column-layout category-4">
+                        <div class="row-layout group_19">
+                            <img src="assets/Social.svg" class="image_5" />
+                        </div>
+                        <div class="row-layout group_20">
+                            <p class="typography__body-2 text_3">
+                                Social Media
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/banking"))" class="column-layout category-2">
+                        <div class="row-layout group_19">
+                            <img src="assets/Banking.svg" class="image_5" />
+                        </div>
+                        <div class="row-layout group_20">
+                            <p class="typography__body-2 text_3">
+                                Banking
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div slot="footer"></div>
+            </IgbDialog>
+            <IgbDialog CloseOnOutsideClick="true" @ref="_profileoverview5">
+                <h5 slot="title"></h5>
+                <div class="row-layout group_22">
+                    <span @onclick="@(e => _profileoverview5!.ToggleAsync())" class="material-icons icon_2">
+                        close
+                    </span>
+                </div>
+                <div class="row-layout group_23">
+                    <div class="row-layout group_24"></div>
+                    <p class="typography__body-2 text_4">
+                        zoe.e@@etztec.com
+                    </p>
+                    <div class="row-layout group_24"></div>
+                </div>
+                <div class="column-layout group_25">
+                    <div class="row-layout group_26">
+                        <div class="row-layout avatar">
+                            <p class="typography__body-1 text_2">
+                                EG
+                            </p>
+                            <div class="row-layout circle"></div>
+                        </div>
+                        <div class="column-layout group_27">
+                            <p class="typography__subtitle-1 text">
+                                Zoe Emmanuel
+                            </p>
+                            <p class="typography__body-2 text_5">
+                                +44 7123 456789
+                            </p>
+                        </div>
+                    </div>
+                    <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => Navigate("/account/account_home"))" class="button" banking-scope>
+                        Manage your Goowid Account
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+                <div class="column-layout group_28">
+                    <div class="row-layout settings-button-3">
+                        <img src="assets/settings-01.svg" class="image_6" />
+                        <p class="typography__body-2 text_6">
+                            More Settings
+                        </p>
+                    </div>
+                    <div class="row-layout language-button">
+                        <div class="row-layout group_29">
+                            <img src="assets/globe-02.svg" class="image_6" />
+                            <p class="typography__body-2 text">
+                                Language
+                            </p>
+                        </div>
+                        <p class="typography__body-2 text_7">
+                            English
+                        </p>
+                    </div>
+                    <div class="row-layout settings-button-3">
+                        <img src="assets/logout-03.svg" class="image_7" />
+                        <p class="typography__body-2 text">
+                            Log out
+                        </p>
+                    </div>
+                </div>
+                <div class="row-layout group_30">
+                    <div class="row-layout group_31">
+                        <p class="typography__caption text_6">
+                            Privacy Policy
+                        </p>
+                    </div>
+                    <div class="column-layout deivder"></div>
+                    <div class="row-layout group_31">
+                        <p class="typography__caption text_6">
+                            Terms of Service
+                        </p>
+                    </div>
+                </div>
+                <div slot="footer"></div>
+            </IgbDialog>
+        </div>
+    </div>
+    <div class="row-layout group_32">
+        <div class="column-layout sidenav">
+            <div class="column-layout group_33">
+                <div class="column-layout group_34">
+                    <div class="row-layout group_35">
+                        <div @onclick="@(e => Navigate("/dashboard/banking"))" class="row-layout group_36">
+                            <img src="assets/home-03.svg" class="image_8" />
+                        </div>
+                    </div>
+                </div>
+                <div class="column-layout group_37">
+                    <div class="row-layout group_38">
+                        <img src="assets/transfer 1.svg" class="image_9" />
+                    </div>
+                    <div class="row-layout group_38">
+                        <img src="assets/user 3 1.svg" class="image_3" />
+                    </div>
+                    <div class="row-layout group_39">
+                        <img src="assets/credit-card 1.svg" class="image_9" />
+                    </div>
+                    <div class="row-layout group_39">
+                        <img src="assets/loan 1.svg" class="image_9" />
+                    </div>
+                    <div class="row-layout group_39">
+                        <img src="assets/756ddd79607e479b80aba42398f4c7004c9988bd.SVG" class="image_9" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column-layout group_40">
+            <div class="row-layout group_41">
+                <div class="column-layout group_42">
+                    <div class="column-layout group_43">
+                        <div class="row-layout group_44">
+                            <h3 class="h3">
+                                Welcome Zoe
+                            </h3>
+                        </div>
+                        <div class="row-layout group_44">
+                            <h6 class="h6">
+                                Pay someone, buy something or send a gift!
+                            </h6>
+                        </div>
+                    </div>
+                    <div class="row-layout group_45">
+                        <div class="row-layout group_46">
+                            <p class="typography__subtitle-2 text_8">
+                                Add bank accounts and cards
+                            </p>
+                            <div class="row-layout group_47">
+                                <span class="material-icons icon_3">
+                                    add_circle_outline
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-layout group_48">
+                        <div class="column-layout group_49">
+                            <img src="assets/eaf728ea380cd8f68ede028676fb3240b6fe5115.SVG" class="image_10" />
+                            <p class="typography__subtitle-2 content">
+                                GOOWID BALANCE
+                            </p>
+                            <div class="row-layout group_50">
+                                <div class="row-layout group_51">
+                                    <h2 class="content">
+                                        £0.00
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row-layout group_52">
+                                <img src="assets/Group 1S8.svg" class="image_11" />
+                            </div>
+                        </div>
+                        <div class="column-layout group_53">
+                            <div class="row-layout group_54">
+                                <img src="assets/eaf728ea380cd8f68ede028676fb3240b6fe5115.SVG" class="image_10" />
+                            </div>
+                            <div class="row-layout group_55">
+                                <h2 class="content_1">
+                                    £0.00
+                                </h2>
+                            </div>
+                            <div class="row-layout group_56">
+                                <img src="assets/Group 18.svg" class="image_12" />
+                            </div>
+                            <p class="typography__subtitle-2 content_1">
+                                SAVING POT
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private IgbNavDrawer _navDrawer5;
+    private IgbDialog _overview4;
+    private IgbDialog _profileoverview5;
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

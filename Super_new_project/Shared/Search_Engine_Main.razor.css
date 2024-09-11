@@ -1,0 +1,16 @@
+.row-layout {
+    display: flex;
+}
+.search-engine-main-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.view-container {
+    overflow: auto;
+    position: relative;
+    min-width: 0;
+    min-height: 0;
+    flex-grow: 1;
+}

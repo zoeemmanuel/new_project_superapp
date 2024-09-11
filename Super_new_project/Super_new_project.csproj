@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IgniteUI.Blazor" Version="23.2.257" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Shared/Sign_in.razor.css" CssScope="sign_in-scope" />
+    <None Update="Pages/Sign_in/Sign_in_with_phone_number.razor.css" CssScope="sign_in_with_phone_number-scope" />
+    <None Update="Pages/Sign_in/OTP_verification.razor.css" CssScope="otp_verification-scope" />
+    <None Update="Shared/Sign_up.razor.css" CssScope="sign_up-scope" />
+    <None Update="Pages/Sign_up/Creating_account.razor.css" CssScope="creating_account-scope" />
+    <None Update="Shared/Dashboard.razor.css" CssScope="dashboard-scope" />
+    <None Update="Pages/Dashboard/Homepage.razor.css" CssScope="homepage-scope" />
+    <None Update="Pages/Dashboard/Search.razor.css" CssScope="search-scope" />
+    <None Update="Pages/Dashboard/Social_Media.razor.css" CssScope="social_media-scope" />
+    <None Update="Pages/Dashboard/Chat.razor.css" CssScope="chat-scope" />
+    <None Update="Pages/Dashboard/Timesheet.razor.css" CssScope="timesheet-scope" />
+    <None Update="Pages/Dashboard/Banking.razor.css" CssScope="banking-scope" />
+    <None Update="Pages/Dashboard/Search_Engine.razor.css" CssScope="search_engine-scope" />
+    <None Update="Shared/Search_Engine_Main.razor.css" CssScope="search_engine_main-scope" />
+    <None Update="Pages/Search_Engine_Main/First_View_Search_Engine.razor.css" CssScope="first_view_search_engine-scope" />
+    <None Update="Shared/Search_Pages.razor.css" CssScope="search_pages-scope" />
+    <None Update="Pages/Search_Pages/Search_First_View.razor.css" CssScope="search_first_view-scope" />
+    <None Update="Shared/Chat_Pages.razor.css" CssScope="chat_pages-scope" />
+    <None Update="Pages/Chat_Pages/First_View.razor.css" CssScope="first_view-scope" />
+    <None Update="Pages/Chat_Pages/Home_View.razor.css" CssScope="home_view-scope" />
+    <None Update="Pages/Chat_Pages/Mentions.razor.css" CssScope="mentions-scope" />
+    <None Update="Pages/Chat_Pages/Favourites.razor.css" CssScope="favourites-scope" />
+    <None Update="Pages/Chat_Pages/New_Convo.razor.css" CssScope="new_convo-scope" />
+    <None Update="Pages/Chat_Pages/New_Convo_Group.razor.css" CssScope="new_convo_group-scope" />
+    <None Update="Pages/Chat_Pages/Unread_Messages.razor.css" CssScope="unread_messages-scope" />
+    <None Update="Shared/Social_Media_Pages.razor.css" CssScope="social_media_pages-scope" />
+    <None Update="Pages/Social_Media_Pages/SM_First_View.razor.css" CssScope="sm_first_view-scope" />
+    <None Update="Shared/Timesheet_Pages.razor.css" CssScope="timesheet_pages-scope" />
+    <None Update="Pages/Timesheet_Pages/Timesheet_First_View.razor.css" CssScope="timesheet_first_view-scope" />
+    <None Update="Shared/Banking_Pages.razor.css" CssScope="banking_pages-scope" />
+    <None Update="Pages/Banking_Pages/Banking_First_View.razor.css" CssScope="banking_first_view-scope" />
+    <None Update="Shared/Account.razor.css" CssScope="account-scope" />
+    <None Update="Pages/Account/Account_Home.razor.css" CssScope="account_home-scope" />
+    <None Update="Pages/Account/Personal_Information.razor.css" CssScope="personal_information-scope" />
+    <None Update="Pages/Account/Data_and_Privacy.razor.css" CssScope="data_and_privacy-scope" />
+    <None Update="Pages/Account/Security.razor.css" CssScope="security-scope" />
+    <None Update="Pages/Account/Subscriptions.razor.css" CssScope="subscriptions-scope" />
+    <None Update="Pages/General_error_page.razor.css" CssScope="general_error_page-scope" />
+    <None Update="Pages/Page.razor.css" CssScope="page-scope" />
+  </ItemGroup>
+
+</Project>

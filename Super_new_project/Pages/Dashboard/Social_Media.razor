@@ -1,0 +1,344 @@
+@page "/dashboard/social_media"
+@inject NavigationManager NavigationManager
+
+<div class="column-layout social-media-container">
+    <div class="column-layout topbar">
+        <div class="column-layout group">
+            <div class="row-layout group_1">
+                <div class="row-layout group_2">
+                    <div class="row-layout round-icon-button-1">
+                        <IgbNavDrawer @onclick="@(e => _navDrawer2!.ToggleAsync())" @ref="_navDrawer2" class="nav-drawer" social_media-scope>
+                            <div class="row-layout group_3">
+                                <div class="row-layout round-icon-button-1">
+                                    <span @onclick="@(e => _navDrawer2!.ToggleAsync())" class="material-icons icon">
+                                        menu
+                                    </span>
+                                </div>
+                                <img src="assets/eaf728ea380cd8f68ede028676fb3240b6fe5115.SVG" class="image" />
+                            </div>
+                            <div class="column-layout group_4">
+                                <div class="column-layout group_5">
+                                    <div class="column-layout group_6">
+                                        <div class="column-layout group_7">
+                                            <div class="column-layout group_8">
+                                                <div class="row-layout group_9">
+                                                    <img src="assets/add-circle.svg" class="image_1" />
+                                                    <p class="typography__body-2 text">
+                                                        My Accounts
+                                                    </p>
+                                                </div>
+                                                <div class="row-layout group_10">
+                                                    <img src="assets/phone-star.svg" class="image_1" />
+                                                    <p class="typography__body-2 text_1">
+                                                        Feed
+                                                    </p>
+                                                </div>
+                                                <div class="row-layout group_10">
+                                                    <img src="assets/a0247e3802210bf84e7dea58490eaea19af36379.SVG" class="image_1" />
+                                                    <p class="typography__body-2 text_1">
+                                                        Notifications
+                                                    </p>
+                                                </div>
+                                                <div class="row-layout group_10">
+                                                    <img src="assets/settings-01 (1).svg" class="image_2" />
+                                                    <p class="typography__body-2 text_1">
+                                                        Settings
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </IgbNavDrawer>
+                        <span @onclick="@(e => _navDrawer2!.ToggleAsync())" class="material-icons icon">
+                            menu
+                        </span>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="row-layout group_11">
+                        <img src="assets/eaf728ea380cd8f68ede028676fb3240b6fe5115.SVG" class="image_3" />
+                    </div>
+                </div>
+                <div class="row-layout group_12">
+                    <div class="row-layout group_13">
+                        <div class="row-layout group_14">
+                            <span @onclick="@(e => _overview2!.ToggleAsync())" class="material-icons icon_1">
+                                drag_indicator
+                            </span>
+                        </div>
+                        <IgbDialog CloseOnOutsideClick="true" @ref="_overview2">
+                            <h5 slot="title"></h5>
+                            <div class="row-layout group_15">
+                                <span @onclick="@(e => _overview2!.ToggleAsync())" class="material-icons icon_2">
+                                    close
+                                </span>
+                            </div>
+                            <div class="row-layout group_16">
+                                <img src="assets/goowid-logo.svg" @onclick="@(e => Navigate("/dashboard/search_engine"))" class="image_4" />
+                            </div>
+                            <div class="row-layout group_17">
+                                <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="column-layout category-2">
+                                    <div class="row-layout group_18">
+                                        <img src="assets/searchengine_icon.svg" class="image_5" />
+                                    </div>
+                                    <div class="row-layout group_19">
+                                        <p class="typography__body-2 text_2">
+                                            Search
+                                        </p>
+                                    </div>
+                                </div>
+                                <div @onclick="@(e => Navigate("/dashboard/search"))" class="column-layout category-2">
+                                    <div class="row-layout group_18">
+                                        <img src="assets/AIsearch.svg" class="image_5" />
+                                    </div>
+                                    <div class="row-layout group_19">
+                                        <p class="typography__body-2 text_2">
+                                            AI Assist
+                                        </p>
+                                    </div>
+                                </div>
+                                <div @onclick="@(e => Navigate("/dashboard/chat"))" class="column-layout category-2">
+                                    <div class="row-layout group_18">
+                                        <img src="assets/Chats.svg" class="image_5" />
+                                    </div>
+                                    <div class="row-layout group_19">
+                                        <p class="typography__body-2 text_2">
+                                            Chat
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row-layout group_20">
+                                <div @onclick="@(e => Navigate("/dashboard/timesheet"))" class="column-layout category-2">
+                                    <div class="row-layout group_18">
+                                        <img src="assets/timesheet.svg" class="image_5" />
+                                    </div>
+                                    <div class="row-layout group_19">
+                                        <p class="typography__body-2 text_2">
+                                            Timesheet
+                                        </p>
+                                    </div>
+                                </div>
+                                <div @onclick="@(e => Navigate("/dashboard/social_media"))" class="column-layout category-4">
+                                    <div class="row-layout group_18">
+                                        <img src="assets/Social.svg" class="image_5" />
+                                    </div>
+                                    <div class="row-layout group_19">
+                                        <p class="typography__body-2 text_2">
+                                            Social Media
+                                        </p>
+                                    </div>
+                                </div>
+                                <div @onclick="@(e => Navigate("/dashboard/banking"))" class="column-layout category-2">
+                                    <div class="row-layout group_18">
+                                        <img src="assets/Banking.svg" class="image_5" />
+                                    </div>
+                                    <div class="row-layout group_19">
+                                        <p class="typography__body-2 text_2">
+                                            Banking
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div slot="footer"></div>
+                        </IgbDialog>
+                    </div>
+                    <div class="row-layout group_21">
+                        <div class="row-layout group_14">
+                            <div @onclick="@(e => _profileoverview2!.ToggleAsync())" class="row-layout profile-user">
+                                <p class="typography__body-1 text_3">
+                                    Z
+                                </p>
+                            </div>
+                        </div>
+                        <IgbDialog CloseOnOutsideClick="true" @ref="_profileoverview2">
+                            <h5 slot="title"></h5>
+                            <div class="row-layout group_22">
+                                <span @onclick="@(e => _profileoverview2!.ToggleAsync())" class="material-icons icon_2">
+                                    close
+                                </span>
+                            </div>
+                            <div class="row-layout group_23">
+                                <div class="row-layout group_24"></div>
+                                <p class="typography__body-2 text_4">
+                                    zoe.e@@etztec.com
+                                </p>
+                                <div class="row-layout group_24"></div>
+                            </div>
+                            <div class="column-layout group_25">
+                                <div class="row-layout group_26">
+                                    <div class="row-layout avatar">
+                                        <p class="typography__body-1 text_3">
+                                            EG
+                                        </p>
+                                        <div class="row-layout circle"></div>
+                                    </div>
+                                    <div class="column-layout topbar">
+                                        <p class="typography__subtitle-1 text_5">
+                                            Zoe Emmanuel
+                                        </p>
+                                        <p class="typography__body-2 text_6">
+                                            +44 7123 456789
+                                        </p>
+                                    </div>
+                                </div>
+                                <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => Navigate("/account/account_home"))" class="button" social_media-scope>
+                                    Manage your Goowid Account
+                                    <IgbRipple></IgbRipple>
+                                </IgbButton>
+                            </div>
+                            <div class="column-layout group_27">
+                                <div class="row-layout settings-button-1">
+                                    <img src="assets/settings-01.svg" class="image_6" />
+                                    <p class="typography__body-2 text_7">
+                                        More Settings
+                                    </p>
+                                </div>
+                                <div class="row-layout language-button">
+                                    <div class="row-layout group_28">
+                                        <img src="assets/globe-02.svg" class="image_6" />
+                                        <p class="typography__body-2 text_5">
+                                            Language
+                                        </p>
+                                    </div>
+                                    <p class="typography__body-2 text_8">
+                                        English
+                                    </p>
+                                </div>
+                                <div class="row-layout settings-button-1">
+                                    <img src="assets/logout-03.svg" class="image_7" />
+                                    <p class="typography__body-2 text_5">
+                                        Log out
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row-layout group_29">
+                                <div class="row-layout group_30">
+                                    <p class="typography__caption text_7">
+                                        Privacy Policy
+                                    </p>
+                                </div>
+                                <div class="column-layout deivder"></div>
+                                <div class="row-layout group_30">
+                                    <p class="typography__caption text_7">
+                                        Terms of Service
+                                    </p>
+                                </div>
+                            </div>
+                            <div slot="footer"></div>
+                        </IgbDialog>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column-layout group_31">
+        <div class="column-layout group_32">
+            <div class="column-layout group_33">
+                <img src="assets/goowid-logo.svg" class="image_8" />
+                <p class="typography__caption text_9">
+                    social media
+                </p>
+            </div>
+        </div>
+        <div class="column-layout group_34">
+            <div class="row-layout group_35">
+                <div class="column-layout social-item-4">
+                    <div class="row-layout group_36">
+                        <img src="assets/Social icon.svg" class="image_5" />
+                    </div>
+                    <div class="row-layout group_37">
+                        <p class="typography__body-2 text_2">
+                            Facebook
+                        </p>
+                    </div>
+                </div>
+                <div class="column-layout social-item-4">
+                    <div class="row-layout group_36">
+                        <img src="assets/Social icon-3.svg" class="image_5" />
+                    </div>
+                    <div class="row-layout group_37">
+                        <p class="typography__body-2 text_2">
+                            Instagram
+                        </p>
+                    </div>
+                </div>
+                <div class="column-layout social-item-4">
+                    <div class="row-layout group_36">
+                        <img src="assets/Social icon-7.svg" class="image_5" />
+                    </div>
+                    <div class="row-layout group_37">
+                        <p class="typography__body-2 text_2">
+                            LinkedIn
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row-layout group_38">
+                <div class="column-layout social-item-4">
+                    <div class="row-layout group_36">
+                        <img src="assets/Social icon-4.svg" class="image_5" />
+                    </div>
+                    <div class="row-layout group_37">
+                        <p class="typography__body-2 text_2">
+                            YouTube
+                        </p>
+                    </div>
+                </div>
+                <div class="column-layout social-item-4">
+                    <div class="row-layout group_36">
+                        <img src="assets/Social icon-5.svg" class="image_5" />
+                    </div>
+                    <div class="row-layout group_37">
+                        <p class="typography__body-2 text_2">
+                            X
+                        </p>
+                    </div>
+                </div>
+                <div class="column-layout social-item-4">
+                    <div class="row-layout group_36">
+                        <img src="assets/Social icon-1.svg" class="image_5" />
+                    </div>
+                    <div class="row-layout group_37">
+                        <p class="typography__body-2 text_2">
+                            TikTok
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row-layout group_39">
+                <div class="column-layout social-item-4">
+                    <div class="row-layout group_36">
+                        <img src="assets/Social icon-6.svg" class="image_5" />
+                    </div>
+                    <div class="row-layout group_37">
+                        <p class="typography__body-2 text_2">
+                            Telegram
+                        </p>
+                    </div>
+                </div>
+                <div class="column-layout social-item-4">
+                    <div class="row-layout group_36">
+                        <img src="assets/Social icon-2.svg" class="image_5" />
+                    </div>
+                    <div class="row-layout group_37">
+                        <p class="typography__body-2 text_2">
+                            Pinterest
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private IgbNavDrawer _navDrawer2;
+    private IgbDialog _overview2;
+    private IgbDialog _profileoverview2;
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

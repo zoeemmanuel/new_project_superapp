@@ -1,0 +1,218 @@
+@page "/timesheet_pages/timesheet_first_view"
+@inject NavigationManager NavigationManager
+
+<div class="column-layout timesheet-first-view-container">
+    <div class="row-layout topbar">
+        <div class="row-layout group">
+            <div class="row-layout round-icon-button-1">
+                <IgbNavDrawer @onclick="@(e => _navDrawer17!.ToggleAsync())" @ref="_navDrawer17" class="nav-drawer" timesheet_first_view-scope>
+                    <div class="row-layout group_1">
+                        <div class="row-layout round-icon-button-1">
+                            <span @onclick="@(e => _navDrawer17!.ToggleAsync())" class="material-icons icon">
+                                menu
+                            </span>
+                        </div>
+                        <img src="assets/timesheet 2.svg" class="image" />
+                    </div>
+                </IgbNavDrawer>
+                <span @onclick="@(e => _navDrawer17!.ToggleAsync())" class="material-icons icon">
+                    menu
+                </span>
+            </div>
+            <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="row-layout group_2">
+                <img src="assets/timesheet 2.svg" class="image" />
+            </div>
+        </div>
+        <div class="row-layout group_3">
+            <div class="row-layout group_4">
+                <span @onclick="@(e => _overview17!.ToggleAsync())" class="material-icons icon_1">
+                    drag_indicator
+                </span>
+            </div>
+            <div class="row-layout group_4">
+                <div @onclick="@(e => _profileoverview17!.ToggleAsync())" class="row-layout profile-user">
+                    <p class="typography__body-1 text">
+                        Z
+                    </p>
+                </div>
+            </div>
+            <IgbDialog CloseOnOutsideClick="true" @ref="_profileoverview17">
+                <h5 slot="title"></h5>
+                <div class="row-layout group_5">
+                    <span @onclick="@(e => _profileoverview17!.ToggleAsync())" class="material-icons icon_2">
+                        close
+                    </span>
+                </div>
+                <div class="row-layout group_6">
+                    <div class="row-layout group_7"></div>
+                    <p class="typography__body-2 text_1">
+                        zoe.e@@etztec.com
+                    </p>
+                    <div class="row-layout group_7"></div>
+                </div>
+                <div class="column-layout group_8">
+                    <div class="row-layout group_9">
+                        <div class="row-layout avatar">
+                            <p class="typography__body-1 text">
+                                EG
+                            </p>
+                            <div class="row-layout circle"></div>
+                        </div>
+                        <div class="column-layout group_10">
+                            <p class="typography__subtitle-1 text_2">
+                                Zoe Emmanuel
+                            </p>
+                            <p class="typography__body-2 text_3">
+                                +44 7123 456789
+                            </p>
+                        </div>
+                    </div>
+                    <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => Navigate("/account/account_home"))" class="button" timesheet_first_view-scope>
+                        Manage your Goowid Account
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+                <div class="column-layout group_11">
+                    <div class="row-layout settings-button">
+                        <img src="assets/settings-01.svg" class="image_1" />
+                        <p class="typography__body-2 text_4">
+                            More Settings
+                        </p>
+                    </div>
+                    <div class="row-layout language-button">
+                        <div class="row-layout group_12">
+                            <img src="assets/globe-02.svg" class="image_1" />
+                            <p class="typography__body-2 text_2">
+                                Language
+                            </p>
+                        </div>
+                        <p class="typography__body-2 text_5">
+                            English
+                        </p>
+                    </div>
+                    <div class="row-layout settings-button">
+                        <img src="assets/logout-03.svg" class="image_2" />
+                        <p class="typography__body-2 text_2">
+                            Log out
+                        </p>
+                    </div>
+                </div>
+                <div class="row-layout group_13">
+                    <div class="row-layout group_14">
+                        <p class="typography__caption text_4">
+                            Privacy Policy
+                        </p>
+                    </div>
+                    <div class="column-layout deivder"></div>
+                    <div class="row-layout group_14">
+                        <p class="typography__caption text_4">
+                            Terms of Service
+                        </p>
+                    </div>
+                </div>
+                <div slot="footer"></div>
+            </IgbDialog>
+            <IgbDialog CloseOnOutsideClick="true" @ref="_overview17">
+                <h5 slot="title"></h5>
+                <div class="row-layout group_15">
+                    <span @onclick="@(e => _overview17!.ToggleAsync())" class="material-icons icon_2">
+                        close
+                    </span>
+                </div>
+                <div class="row-layout group_16">
+                    <img src="assets/goowid-logo.svg" @onclick="@(e => Navigate("/dashboard/homepage"))" class="image_3" />
+                </div>
+                <div class="row-layout group_17">
+                    <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="column-layout category-2">
+                        <div class="row-layout group_18">
+                            <img src="assets/searchengine_icon.svg" class="image_4" />
+                        </div>
+                        <div class="row-layout group_19">
+                            <p class="typography__body-2 text_6">
+                                Search
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/search"))" class="column-layout category-2">
+                        <div class="row-layout group_18">
+                            <img src="assets/AIsearch.svg" class="image_4" />
+                        </div>
+                        <div class="row-layout group_19">
+                            <p class="typography__body-2 text_6">
+                                AI Assist
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/chat"))" class="column-layout category-2">
+                        <div class="row-layout group_18">
+                            <img src="assets/Chats.svg" class="image_4" />
+                        </div>
+                        <div class="row-layout group_19">
+                            <p class="typography__body-2 text_6">
+                                Chat
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-layout group_20">
+                    <div @onclick="@(e => Navigate("/dashboard/timesheet"))" class="column-layout category-2">
+                        <div class="row-layout group_18">
+                            <img src="assets/timesheet.svg" class="image_4" />
+                        </div>
+                        <div class="row-layout group_19">
+                            <p class="typography__body-2 text_6">
+                                Timesheet
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/social_media"))" class="column-layout category-4">
+                        <div class="row-layout group_18">
+                            <img src="assets/Social.svg" class="image_4" />
+                        </div>
+                        <div class="row-layout group_19">
+                            <p class="typography__body-2 text_6">
+                                Social Media
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/banking"))" class="column-layout category-2">
+                        <div class="row-layout group_18">
+                            <img src="assets/Banking.svg" class="image_4" />
+                        </div>
+                        <div class="row-layout group_19">
+                            <p class="typography__body-2 text_6">
+                                Banking
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div slot="footer"></div>
+            </IgbDialog>
+        </div>
+    </div>
+    <div class="row-layout group_21">
+        <div class="column-layout group_21">
+            <div class="row-layout group_22">
+                <div class="column-layout group_23">
+                    <div class="column-layout group_24">
+                        <img src="assets/goowid-logo.svg" class="image_5" />
+                        <p class="typography__caption text_7">
+                            timesheet
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private IgbNavDrawer _navDrawer17;
+    private IgbDialog _profileoverview17;
+    private IgbDialog _overview17;
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

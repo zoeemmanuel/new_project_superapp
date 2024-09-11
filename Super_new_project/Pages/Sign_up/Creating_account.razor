@@ -1,0 +1,63 @@
+@page "/sign_up/creating_account"
+@inject NavigationManager NavigationManager
+
+<div class="row-layout creating-account-container">
+    <div class="column-layout group">
+        <div class="column-layout container">
+            <img src="assets/Goowid_logo.png" class="image" />
+            <div class="column-layout group_1">
+                <h3 class="h3">
+                    Sign up
+                </h3>
+                <p class="typography__body-1 text">
+                    Create your new Goowid account.
+                </p>
+            </div>
+            <div class="column-layout group_2">
+                <IgbInput Placeholder="First Name" Required="true" Outlined="true" class="input" creating_account-scope>
+                    <span slot="prefix">
+                        <span class="material-icons icon">
+                            person
+                        </span>
+                    </span>
+                </IgbInput>
+                <IgbInput Placeholder="Last Name" Required="true" Outlined="true" class="input" creating_account-scope>
+                    <span slot="prefix">
+                        <span class="material-icons icon">
+                            person
+                        </span>
+                    </span>
+                </IgbInput>
+                <IgbInput DisplayType="InputType.Email" Placeholder="Email address" Required="true" Outlined="true" class="input" creating_account-scope>
+                    <span slot="prefix">
+                        <span class="material-icons icon">
+                            email
+                        </span>
+                    </span>
+                </IgbInput>
+            </div>
+            <div class="column-layout group_3">
+                <IgbButton @onclick="@(e => Navigate("/dashboard/homepage"))" class="button" creating_account-scope>
+                    Sign up
+                    <IgbRipple></IgbRipple>
+                </IgbButton>
+                <div class="row-layout group_4">
+                    <p class="typography__body-2 text_1">
+                        Already have account?
+                    </p>
+                    <a @onclick="@(e => Navigate("/dashboard/homepage"))" class="typography__body-2 hyperlink">
+                        Log in
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

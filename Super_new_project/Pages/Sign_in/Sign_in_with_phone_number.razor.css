@@ -1,0 +1,102 @@
+.row-layout {
+    display: flex;
+}
+.sign-in-with-phone-number-container {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    height: 100%;
+}
+.column-layout {
+    display: flex;
+    flex-direction: column;
+}
+.group {
+    background-color: hsla(var(--ig-secondary-400));
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 64px 32px;
+    min-width: 50px;
+    min-height: 50px;
+    align-self: stretch;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.container {
+    background-color: hsla(var(--ig-surface-500));
+    border-radius: 30px;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    position: relative;
+    padding: 30px;
+    width: 400px;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 400px;
+    align-self: center;
+}
+.group_1 {
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    gap: 8px;
+    position: relative;
+    margin: 24px 0 32px;
+    min-width: 50px;
+    min-height: 50px;
+}
+.group_2 {
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: flex-start;
+    gap: 16px;
+    position: relative;
+    margin: 0 0 32px;
+    min-width: 50px;
+    min-height: 50px;
+    align-self: stretch;
+}
+.image {
+    object-fit: cover;
+    width: 64px;
+    height: 64px;
+    min-width: 0;
+    min-height: 0;
+    max-width: 64px;
+    max-height: 64px;
+    flex-shrink: 0;
+}
+.h3 {
+    height: max-content;
+    min-width: min-content;
+}
+.text {
+    text-align: center;
+    color: hsla(var(--ig-gray-700));
+    height: max-content;
+    min-width: min-content;
+    align-self: center;
+}
+.icon {
+    --size: 18px;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: hsla(var(--ig-gray-500));
+}
+.user-input {
+    height: max-content;
+    min-width: min-content;
+    align-self: stretch;
+}
+.button {
+    --ig-size: var(--ig-size-large);
+    height: max-content;
+    align-self: stretch;
+}
+.button::part(base) {
+    color: hsla(var(--ig-surface-500));
+}

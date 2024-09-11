@@ -1,0 +1,343 @@
+@page "/dashboard/homepage"
+@inject NavigationManager NavigationManager
+
+<div class="column-layout homepage-container">
+    <div class="column-layout topbar">
+        <div class="column-layout group">
+            <div class="row-layout group_1">
+                <div class="row-layout group_2">
+                    <div class="row-layout round-icon-button-1">
+                        @if (_navDrawerVisible)
+                        {
+                            <IgbNavDrawer @onclick="@ToggleNavDrawerVisible" @ref="_navDrawer" class="nav-drawer" homepage-scope>
+                                <div class="row-layout group_3">
+                                    <div class="row-layout round-icon-button-1">
+                                        <span @onclick="@(e => _navDrawer!.ToggleAsync())" class="material-icons icon">
+                                            menu
+                                        </span>
+                                    </div>
+                                    <img src="assets/eaf728ea380cd8f68ede028676fb3240b6fe5115.SVG" class="image" />
+                                </div>
+                                <div class="column-layout group_4">
+                                    <div class="column-layout group_5">
+                                        <div class="column-layout group_6">
+                                            <div class="column-layout group_7">
+                                                <div @onclick="@(e => Navigate("/dashboard/homepage"))" class="row-layout group_8">
+                                                    <img src="assets/eaf728ea380cd8f68ede028676fb3240b6fe5115.SVG" class="image_1" />
+                                                    <p class="typography__body-2 text">
+                                                        Home
+                                                    </p>
+                                                </div>
+                                                <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="row-layout group_8">
+                                                    <img src="assets/searchengine_icon.svg" class="image_1" />
+                                                    <p class="typography__body-2 text_1">
+                                                        Search
+                                                    </p>
+                                                </div>
+                                                <div @onclick="@(e => Navigate("/dashboard/chat"))" class="row-layout group_8">
+                                                    <img src="assets/Chats.svg" class="image_1" />
+                                                    <p class="typography__body-2 text_1">
+                                                        Chat
+                                                    </p>
+                                                </div>
+                                                <div @onclick="@(e => Navigate("/dashboard/search"))" class="row-layout group_9">
+                                                    <img src="assets/AIsearch.svg" class="image_1" />
+                                                    <p class="typography__body-2 text_1">
+                                                        AI Assist
+                                                    </p>
+                                                </div>
+                                                <div @onclick="@(e => Navigate("/dashboard/timesheet"))" class="row-layout group_9">
+                                                    <img src="assets/timesheet.svg" class="image_1" />
+                                                    <p class="typography__body-2 text_1">
+                                                        Timesheets
+                                                    </p>
+                                                </div>
+                                                <div @onclick="@(e => Navigate("/dashboard/banking"))" class="row-layout group_9">
+                                                    <img src="assets/Banking.svg" class="image_1" />
+                                                    <p class="typography__body-2 text_2">
+                                                        Banking
+                                                    </p>
+                                                </div>
+                                                <div @onclick="@(e => Navigate("/dashboard/social_media"))" class="row-layout group_9">
+                                                    <img src="assets/Social.svg" class="image_1" />
+                                                    <p class="typography__body-2 text_2">
+                                                        Social
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </IgbNavDrawer>
+                        }
+                        <span @onclick="@(e => _navDrawer!.ToggleAsync())" class="material-icons icon">
+                            menu
+                        </span>
+                    </div>
+                    <div class="row-layout group_10">
+                        <img src="assets/eaf728ea380cd8f68ede028676fb3240b6fe5115.SVG" class="image_2" />
+                    </div>
+                </div>
+                <div class="row-layout group_11">
+                    <IgbDialog CloseOnOutsideClick="true" @ref="_overview">
+                        <h5 slot="title"></h5>
+                        <div class="row-layout group_12">
+                            <span @onclick="@(e => _overview!.ToggleAsync())" class="material-icons icon_1">
+                                close
+                            </span>
+                        </div>
+                        <div class="row-layout group_13">
+                            <img src="assets/goowid-logo.svg" @onclick="@(e => Navigate("/dashboard/homepage"))" class="image_3" />
+                        </div>
+                        <div class="row-layout group_14">
+                            <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="column-layout category-2">
+                                <div class="row-layout group_15">
+                                    <img src="assets/searchengine_icon.svg" class="image_4" />
+                                </div>
+                                <div class="row-layout group_16">
+                                    <p class="typography__body-2 text_3">
+                                        Search
+                                    </p>
+                                </div>
+                            </div>
+                            <div @onclick="@(e => Navigate("/dashboard/search"))" class="column-layout category-2">
+                                <div class="row-layout group_15">
+                                    <img src="assets/AIsearch.svg" class="image_4" />
+                                </div>
+                                <div class="row-layout group_16">
+                                    <p class="typography__body-2 text_3">
+                                        AI Assist
+                                    </p>
+                                </div>
+                            </div>
+                            <div @onclick="@(e => Navigate("/dashboard/chat"))" class="column-layout category-2">
+                                <div class="row-layout group_15">
+                                    <img src="assets/Chats.svg" class="image_4" />
+                                </div>
+                                <div class="row-layout group_16">
+                                    <p class="typography__body-2 text_3">
+                                        Chat
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row-layout group_17">
+                            <div @onclick="@(e => Navigate("/dashboard/timesheet"))" class="column-layout category-2">
+                                <div class="row-layout group_15">
+                                    <img src="assets/timesheet.svg" class="image_4" />
+                                </div>
+                                <div class="row-layout group_16">
+                                    <p class="typography__body-2 text_3">
+                                        Timesheet
+                                    </p>
+                                </div>
+                            </div>
+                            <div @onclick="@(e => Navigate("/dashboard/social_media"))" class="column-layout category-4">
+                                <div class="row-layout group_15">
+                                    <img src="assets/Social.svg" class="image_4" />
+                                </div>
+                                <div class="row-layout group_16">
+                                    <p class="typography__body-2 text_3">
+                                        Social Media
+                                    </p>
+                                </div>
+                            </div>
+                            <div @onclick="@(e => Navigate("/dashboard/banking"))" class="column-layout category-2">
+                                <div class="row-layout group_15">
+                                    <img src="assets/Banking.svg" class="image_4" />
+                                </div>
+                                <div class="row-layout group_16">
+                                    <p class="typography__body-2 text_3">
+                                        Banking
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div slot="footer"></div>
+                    </IgbDialog>
+                    <div class="row-layout group_18">
+                        <span @onclick="@(e => _overview!.ToggleAsync())" class="material-icons icon_2">
+                            drag_indicator
+                        </span>
+                    </div>
+                    <div class="row-layout group_19">
+                        <div @onclick="@(e => _profileoverview!.ToggleAsync())" class="row-layout profile-user-1">
+                            <p class="typography__body-1 text_4">
+                                Z
+                            </p>
+                        </div>
+                    </div>
+                    <IgbDialog CloseOnOutsideClick="true" @ref="_profileoverview">
+                        <h5 slot="title"></h5>
+                        <div class="row-layout group_20">
+                            <span @onclick="@(e => _overview!.ToggleAsync())" class="material-icons icon_1">
+                                close
+                            </span>
+                        </div>
+                        <div class="row-layout group_21">
+                            <div class="row-layout group_22"></div>
+                            <p class="typography__body-2 text_5">
+                                zoe.e@@etztec.com
+                            </p>
+                            <div class="row-layout group_22"></div>
+                        </div>
+                        <div class="column-layout group_23">
+                            <div class="row-layout group_24">
+                                <div class="row-layout avatar">
+                                    <p class="typography__body-1 text_4">
+                                        EG
+                                    </p>
+                                    <div class="row-layout circle"></div>
+                                </div>
+                                <div class="column-layout topbar">
+                                    <p class="typography__subtitle-1 text_6">
+                                        Zoe Emmanuel
+                                    </p>
+                                    <p class="typography__body-2 text_7">
+                                        +44 7123 456789
+                                    </p>
+                                </div>
+                            </div>
+                            <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => Navigate("/account/account_home"))" class="button" homepage-scope>
+                                Manage your Goowid Account
+                                <IgbRipple></IgbRipple>
+                            </IgbButton>
+                        </div>
+                        <div class="column-layout group_25">
+                            <div class="row-layout settings-button">
+                                <img src="assets/settings-01.svg" class="image_5" />
+                                <p class="typography__body-2 text_8">
+                                    More Settings
+                                </p>
+                            </div>
+                            <div class="row-layout language-button">
+                                <div class="row-layout group_26">
+                                    <img src="assets/globe-02.svg" class="image_5" />
+                                    <p class="typography__body-2 text_6">
+                                        Language
+                                    </p>
+                                </div>
+                                <p class="typography__body-2 text_9">
+                                    English
+                                </p>
+                            </div>
+                            <div class="row-layout settings-button">
+                                <img src="assets/logout-03.svg" class="image_6" />
+                                <p class="typography__body-2 text_6">
+                                    Log out
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row-layout group_27">
+                            <div class="row-layout group_28">
+                                <p class="typography__caption text_8">
+                                    Privacy Policy
+                                </p>
+                            </div>
+                            <div class="column-layout deivder"></div>
+                            <div class="row-layout group_28">
+                                <p class="typography__caption text_8">
+                                    Terms of Service
+                                </p>
+                            </div>
+                        </div>
+                        <div slot="footer"></div>
+                    </IgbDialog>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="column-layout group_29">
+        <div class="row-layout group_30">
+            <div class="column-layout group_31">
+                <div class="column-layout group_32"></div>
+                <div class="column-layout group_33">
+                    <div class="column-layout group_34">
+                        <div class="column-layout group_35">
+                            <img src="assets/goowid-logo.svg" class="image_7" />
+                        </div>
+                        <div class="row-layout group_36"></div>
+                        <h3 class="h3">
+                            Welcome to Goowid, Zoe
+                        </h3>
+                        <p class="typography__subtitle-1 text_10">
+                            Your all-in-one personal assistant for AI, web search, messaging, banking, and more
+                        </p>
+                        <p class="typography__subtitle-1 text_11"></p>
+                    </div>
+                    <div class="row-layout group_37">
+                        <div @onclick="@(e => Navigate("/dashboard/search"))" class="column-layout group_38">
+                            <img src="assets/archivewhite.svg" class="image_8" />
+                            <p class="typography__subtitle-2 content">
+                                Ask Goowid anything
+                            </p>
+                            <div class="row-layout group_39">
+                                <div class="row-layout group_40">
+                                    <h4 class="content">
+                                        AI Assistant
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="column-layout group_41">
+                            <img src="assets/searchwhite.svg" class="image_9" />
+                            <p class="typography__subtitle-2 content">
+                                Find what you need
+                            </p>
+                            <div class="row-layout group_39">
+                                <div class="row-layout group_40">
+                                    <h4 class="content">
+                                        Web Search
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div @onclick="@(e => Navigate("/dashboard/chat"))" class="column-layout group_42">
+                            <img src="assets/users.svg" class="image_9" />
+                            <p class="typography__subtitle-2 content">
+                                Start a chat or video call
+                            </p>
+                            <div class="row-layout group_39">
+                                <div class="row-layout group_40">
+                                    <h4 class="content">
+                                        Connect
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div @onclick="@(e => Navigate("/dashboard/timesheet"))" class="column-layout group_43">
+                            <img src="assets/edit.svg" class="image_10" />
+                            <p class="typography__subtitle-2 content">
+                                Track your time
+                            </p>
+                            <div class="row-layout group_39">
+                                <div class="row-layout group_40">
+                                    <h4 class="content">
+                                        Manage
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private bool _navDrawerVisible = true;
+    private IgbNavDrawer _navDrawer;
+    private IgbDialog _overview;
+    private IgbDialog _profileoverview;
+
+    private void ToggleNavDrawerVisible()
+    {
+        _navDrawerVisible = !_navDrawerVisible;
+    }
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

@@ -1,0 +1,392 @@
+@page "/chat_pages/unread_messages"
+@inject NavigationManager NavigationManager
+
+<div class="column-layout unread-messages-container">
+    <div class="row-layout topbar">
+        <div class="row-layout group">
+            <div class="row-layout round-icon-button-1">
+                <IgbNavDrawer @onclick="@(e => _navDrawer15!.ToggleAsync())" @ref="_navDrawer15" class="nav-drawer" unread_messages-scope>
+                    <div class="row-layout group">
+                        <div class="row-layout round-icon-button-1">
+                            <span class="material-icons icon">
+                                menu
+                            </span>
+                        </div>
+                        <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="row-layout group_1">
+                            <img src="assets/gchat monogram.svg" class="image" />
+                        </div>
+                    </div>
+                    <div class="column-layout group_2">
+                        <div class="column-layout group_3">
+                            <div class="column-layout group_4">
+                                <div class="row-layout group_5">
+                                    <div @onclick="@(e => _chatdialog7!.ToggleAsync())" class="row-layout group_6">
+                                        <img src="assets/pencil-edit-02.svg" class="image_1" />
+                                        <p class="typography__body-1 text">
+                                            New chat
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <IgbDialog CloseOnOutsideClick="true" @ref="_group7">
+                                <h5 slot="title">
+                                    Create a Group
+                                </h5>
+                                <div class="column-layout group_7">
+                                    <IgbInput Placeholder="Space Name" Required="true" Outlined="false" class="input" unread_messages-scope>
+                                        <span slot="prefix">
+                                            <span class="material-icons icon">
+                                                add_reaction
+                                            </span>
+                                        </span>
+                                        <span slot="helper-text">0/150</span>
+                                    </IgbInput>
+                                </div>
+                                <div slot="footer">
+                                    <IgbButton @onclick="@(e => _group7!.ToggleAsync())" class="button button_6" unread_messages-scope>
+                                        Cancel
+                                        <IgbRipple></IgbRipple>
+                                    </IgbButton>
+                                    <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => Navigate("/chat_pages/new_convo_group"))" class="button_1 button_1_1" unread_messages-scope>
+                                        Create Group
+                                        <IgbRipple></IgbRipple>
+                                    </IgbButton>
+                                </div>
+                            </IgbDialog>
+                            <div class="column-layout group_8">
+                                <div @onclick="@(e => Navigate("/chat_pages/home_view"))" class="row-layout group_9">
+                                    <img src="assets/home-03.svg" class="image_2" />
+                                    <p class="typography__body-2 text_1">
+                                        Home
+                                    </p>
+                                </div>
+                                <div @onclick="@(e => Navigate("/chat_pages/mentions"))" class="row-layout group_10">
+                                    <img src="assets/a0247e3802210bf84e7dea58490eaea19af36379.SVG" class="image_3" />
+                                    <p class="typography__body-2 text_1">
+                                        Mentions
+                                    </p>
+                                </div>
+                                <div @onclick="@(e => Navigate("/chat_pages/favourites"))" class="row-layout group_11">
+                                    <img src="assets/star.svg" class="image_2" />
+                                    <p class="typography__body-2 text_1">
+                                        Favorites
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="column-layout group_12">
+                            <IgbButton Variant="ButtonVariant.Flat" @onclick="@ToggleGroupVisible10" class="button_2 button_2_1" unread_messages-scope>
+                                <span class="material-icons icon_1">
+                                    arrow_drop_down
+                                </span>
+                                <span>Direct Messages</span>
+                                <IgbRipple></IgbRipple>
+                            </IgbButton>
+                            @if (_groupVisible10)
+                            {
+                                <div @onclick="@(e => Navigate("/chat_pages/new_convo"))" class="row-layout group_13">
+                                    <div class="row-layout profile-user"></div>
+                                    <p class="typography__body-2 text_1">
+                                        J Joshua
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                        <div class="column-layout group_14">
+                            <IgbButton Variant="ButtonVariant.Flat" @onclick="@ToggleGroupVisible11" class="button_3 button_3_1" unread_messages-scope>
+                                <span class="material-icons icon_1">
+                                    arrow_drop_down
+                                </span>
+                                <span>Groups</span>
+                                <IgbRipple></IgbRipple>
+                            </IgbButton>
+                            @if (_groupVisible11)
+                            {
+                                <div @onclick="@(e => Navigate("/chat_pages/new_convo_group"))" class="row-layout group_13">
+                                    <div class="row-layout profile-user"></div>
+                                    <p class="typography__body-2 text_1">
+                                        Marketing CTO
+                                    </p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </IgbNavDrawer>
+                <span @onclick="@(e => _navDrawer15!.ToggleAsync())" class="material-icons icon">
+                    menu
+                </span>
+            </div>
+            <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="row-layout group_1">
+                <img src="assets/gchat monogram.svg" class="image_4" />
+            </div>
+        </div>
+        <div class="row-layout group_15">
+            <div class="row-layout group_16">
+                <span @onclick="@(e => _overview15!.ToggleAsync())" class="material-icons icon_2">
+                    drag_indicator
+                </span>
+            </div>
+            <div class="row-layout group_17">
+                <div @onclick="@(e => _profileoverview15!.ToggleAsync())" class="row-layout profile-user-2">
+                    <p class="typography__body-1 text_2">
+                        Z
+                    </p>
+                </div>
+            </div>
+            <IgbDialog CloseOnOutsideClick="true" @ref="_profileoverview15">
+                <h5 slot="title"></h5>
+                <div class="row-layout group_18">
+                    <span @onclick="@(e => _profileoverview15!.ToggleAsync())" class="material-icons icon_3">
+                        close
+                    </span>
+                </div>
+                <div class="row-layout group_19">
+                    <div class="row-layout group_20"></div>
+                    <p class="typography__body-2 text_3">
+                        zoe.e@@etztec.com
+                    </p>
+                    <div class="row-layout group_20"></div>
+                </div>
+                <div class="column-layout group_21">
+                    <div class="row-layout group_22">
+                        <div class="row-layout avatar">
+                            <p class="typography__body-1 text_2">
+                                EG
+                            </p>
+                            <div class="row-layout circle"></div>
+                        </div>
+                        <div class="column-layout group_23">
+                            <p class="typography__subtitle-1 text_1">
+                                Zoe Emmanuel
+                            </p>
+                            <p class="typography__body-2 text_4">
+                                +44 7123 456789
+                            </p>
+                        </div>
+                    </div>
+                    <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => Navigate("/account/account_home"))" class="button button_7" unread_messages-scope>
+                        Manage your Goowid Account
+                        <IgbRipple></IgbRipple>
+                    </IgbButton>
+                </div>
+                <div class="column-layout group_24">
+                    <div class="row-layout settings-button">
+                        <img src="assets/settings-01.svg" class="image_5" />
+                        <p class="typography__body-2 content">
+                            More Settings
+                        </p>
+                    </div>
+                    <div class="row-layout language-button">
+                        <div class="row-layout group_25">
+                            <img src="assets/globe-02.svg" class="image_5" />
+                            <p class="typography__body-2 text_1">
+                                Language
+                            </p>
+                        </div>
+                        <p class="typography__body-2 text_6">
+                            English
+                        </p>
+                    </div>
+                    <div class="row-layout settings-button">
+                        <img src="assets/logout-03.svg" class="image_6" />
+                        <p class="typography__body-2 text_1">
+                            Log out
+                        </p>
+                    </div>
+                </div>
+                <div class="row-layout group_26">
+                    <div class="row-layout group_27">
+                        <p class="typography__caption content">
+                            Privacy Policy
+                        </p>
+                    </div>
+                    <div class="column-layout deivder"></div>
+                    <div class="row-layout group_27">
+                        <p class="typography__caption content">
+                            Terms of Service
+                        </p>
+                    </div>
+                </div>
+                <div slot="footer"></div>
+            </IgbDialog>
+            <IgbDialog CloseOnOutsideClick="true" @ref="_overview15">
+                <h5 slot="title"></h5>
+                <div class="row-layout group_28">
+                    <span @onclick="@(e => _overview15!.ToggleAsync())" class="material-icons icon_3">
+                        close
+                    </span>
+                </div>
+                <div class="row-layout group_29">
+                    <img src="assets/goowid-logo.svg" @onclick="@(e => Navigate("/dashboard/homepage"))" class="image_7" />
+                </div>
+                <div class="row-layout group_30">
+                    <div @onclick="@(e => Navigate("/dashboard/search_engine"))" class="column-layout category-2">
+                        <div class="row-layout group_31">
+                            <img src="assets/searchengine_icon.svg" class="image_8" />
+                        </div>
+                        <div class="row-layout group_32">
+                            <p class="typography__body-2 text_7">
+                                Search
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/search"))" class="column-layout category-2">
+                        <div class="row-layout group_31">
+                            <img src="assets/AIsearch.svg" class="image_8" />
+                        </div>
+                        <div class="row-layout group_32">
+                            <p class="typography__body-2 text_7">
+                                AI Assist
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/chat"))" class="column-layout category-2">
+                        <div class="row-layout group_31">
+                            <img src="assets/Chats.svg" class="image_8" />
+                        </div>
+                        <div class="row-layout group_32">
+                            <p class="typography__body-2 text_7">
+                                Chat
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-layout group_33">
+                    <div @onclick="@(e => Navigate("/dashboard/timesheet"))" class="column-layout category-2">
+                        <div class="row-layout group_31">
+                            <img src="assets/timesheet.svg" class="image_8" />
+                        </div>
+                        <div class="row-layout group_32">
+                            <p class="typography__body-2 text_7">
+                                Timesheet
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/social_media"))" class="column-layout category-4">
+                        <div class="row-layout group_31">
+                            <img src="assets/Social.svg" class="image_8" />
+                        </div>
+                        <div class="row-layout group_32">
+                            <p class="typography__body-2 text_7">
+                                Social Media
+                            </p>
+                        </div>
+                    </div>
+                    <div @onclick="@(e => Navigate("/dashboard/banking"))" class="column-layout category-2">
+                        <div class="row-layout group_31">
+                            <img src="assets/Banking.svg" class="image_8" />
+                        </div>
+                        <div class="row-layout group_32">
+                            <p class="typography__body-2 text_7">
+                                Banking
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div slot="footer"></div>
+            </IgbDialog>
+        </div>
+    </div>
+    <div class="row-layout group_34">
+        <div class="column-layout sidenav">
+            <div class="column-layout group_35">
+                <div class="column-layout group_36">
+                    <div class="row-layout group_37">
+                        <div class="row-layout group_38">
+                            <img src="assets/pencil-edit-02.svg" @onclick="@(e => _chatdialog7!.ToggleAsync())" class="image_1" />
+                        </div>
+                    </div>
+                </div>
+                <IgbDialog CloseOnOutsideClick="true" @ref="_chatdialog7">
+                    <h5 slot="title">
+                        New Chat
+                    </h5>
+                    <div class="column-layout group_39">
+                        <div class="row-layout group_40">
+                            <IgbInput Placeholder="Add 1 or more people" Outlined="true" class="input_1" unread_messages-scope>
+                                <span slot="prefix">
+                                    <span class="material-icons icon">
+                                        search
+                                    </span>
+                                </span>
+                            </IgbInput>
+                        </div>
+                        <div class="column-layout group_39">
+                            <div class="row-layout group_39">
+                                <div @onclick="@(e => _chatdialog7!.ToggleAsync())" class="row-layout settings-button-1">
+                                    <img src="assets/add-circle.svg" @onclick="@(e => _group7!.ToggleAsync())" class="image_5" />
+                                    <p @onclick="@(e => _group7!.ToggleAsync())" class="typography__body-2 text_1">
+                                        Create a group
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div slot="footer">
+                        <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => Navigate("/chat_pages/new_convo"))" class="button_4 button_4_1" unread_messages-scope>
+                            start chat
+                            <IgbRipple></IgbRipple>
+                        </IgbButton>
+                    </div>
+                </IgbDialog>
+                <div class="column-layout group_41">
+                    <div class="row-layout group_42">
+                        <img src="assets/home-03.svg" @onclick="@(e => Navigate("/chat_pages/home_view"))" class="image_9" />
+                    </div>
+                    <div class="row-layout group_42">
+                        <img src="assets/a0247e3802210bf84e7dea58490eaea19af36379.SVG" @onclick="@(e => Navigate("/chat_pages/mentions"))" class="image_10" />
+                    </div>
+                    <div class="row-layout group_43">
+                        <img src="assets/star.svg" @onclick="@(e => Navigate("/chat_pages/favourites"))" class="image_9" />
+                    </div>
+                </div>
+            </div>
+            <div class="column-layout group_44"></div>
+        </div>
+        <div class="column-layout group_45">
+            <div class="row-layout group_46">
+                <div class="row-layout group_47">
+                    <h5 class="content">
+                        Messages
+                    </h5>
+                </div>
+                <div class="row-layout group_48">
+                    <div class="row-layout group_49">
+                        <IgbButton Variant="ButtonVariant.Outlined" @onclick="@(e => Navigate("/chat_pages/home_view"))" class="button_5 button_5_1" unread_messages-scope>
+                            <span class="material-icons icon_4">
+                                done
+                            </span>
+                            <span>unread</span>
+                            <IgbRipple></IgbRipple>
+                        </IgbButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private IgbNavDrawer _navDrawer15;
+    private IgbDialog _group7;
+    private bool _groupVisible10 = true;
+    private bool _groupVisible11 = true;
+    private IgbDialog _profileoverview15;
+    private IgbDialog _overview15;
+    private IgbDialog _chatdialog7;
+
+    private void ToggleGroupVisible10()
+    {
+        _groupVisible10 = !_groupVisible10;
+    }
+
+    private void ToggleGroupVisible11()
+    {
+        _groupVisible11 = !_groupVisible11;
+    }
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

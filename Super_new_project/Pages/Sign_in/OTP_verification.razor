@@ -1,0 +1,51 @@
+@page "/sign_in/otp_verification"
+@inject NavigationManager NavigationManager
+
+<div class="row-layout otp-verification-container">
+    <div class="column-layout group">
+        <div class="column-layout container">
+            <img src="assets/otp.svg" class="image" />
+            <div class="column-layout group_1">
+                <h3 class="h3">
+                    OTP Verification
+                </h3>
+                <p class="typography__body-2 text">
+                    We sent a verification code to your phone ending in ******7160. This helps keep your account secure.
+                </p>
+            </div>
+            <IgbInput DisplayType="InputType.Number" Required="true" Outlined="true" Value="@_value.ToString()" Change="@(e => _value = double.Parse(e.Detail))" class="input" otp_verification-scope>
+                <span slot="prefix">
+                    <span class="material-icons icon">
+                        pin
+                    </span>
+                </span>
+            </IgbInput>
+            <div class="column-layout group_2">
+                <IgbButton @onclick="@(e => Navigate("/dashboard/homepage"))" class="button" otp_verification-scope>
+                    <span>Submit</span>
+                    <span class="material-icons icon_1">
+                        arrow_forward
+                    </span>
+                    <IgbRipple></IgbRipple>
+                </IgbButton>
+                <div class="row-layout group_3">
+                    <p class="typography__body-2 text_1">
+                        Didn't get your code?
+                    </p>
+                    <a class="typography__body-2 hyperlink">
+                        Resend OTP
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private double _value = 253456;
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

@@ -1,0 +1,59 @@
+@page "/"
+@page "/sign_in/sign_in_with_phone_number"
+@inject NavigationManager NavigationManager
+
+<div class="row-layout sign-in-with-phone-number-container">
+    <div class="column-layout group">
+        <div class="column-layout container">
+            <img src="assets/Goowid_logo.png" class="image" />
+            <div class="column-layout group_1">
+                <h3 class="h3">
+                    Get started
+                </h3>
+                <p class="typography__body-1 text">
+                    Please enter your phone number
+                </p>
+            </div>
+            <div class="column-layout group_2">
+                <IgbSelect Outlined="true" Placeholder="Australia (+61)" class="user-input" sign_in_with_phone_number-scope>
+                    <span slot="prefix">
+                        <span class="material-icons icon">
+                            public
+                        </span>
+                    </span>
+                    <IgbSelectItem Value="Option">
+                        United Kingdom (+44)
+                    </IgbSelectItem>
+                    <IgbSelectItem Value="+61">
+                        Australia (+61)
+                    </IgbSelectItem>
+                    <IgbSelectItem Value="Option">
+                        Indonesia (+62)
+                    </IgbSelectItem>
+                    <IgbSelectItem Value="Option">
+                        Singapore (+65)
+                    </IgbSelectItem>
+                </IgbSelect>
+                <IgbInput DisplayType="InputType.Tel" Placeholder="Phone number" Required="true" Outlined="true" class="user-input" sign_in_with_phone_number-scope>
+                    <span slot="prefix">
+                        <span class="material-icons icon">
+                            phone_android
+                        </span>
+                    </span>
+                </IgbInput>
+            </div>
+            <IgbButton @onclick="@(e => Navigate("/sign_in/otp_verification"))" class="button" sign_in_with_phone_number-scope>
+                Sign up
+                <IgbRipple></IgbRipple>
+            </IgbButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public void Navigate(string path)
+    {
+        NavigationManager.NavigateTo(path);
+    }
+}

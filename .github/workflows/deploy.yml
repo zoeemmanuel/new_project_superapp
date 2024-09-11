@@ -1,45 +1,96 @@
-name: Build and Deploy Docker Image
+name: Deploy to DigitalOcean Droplet
 
 on:
   push:
-    branches:
-      - master
+    branches: [ master ]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v3
-
-    - name: Build Docker image
+    - name: List directory contents
       run: |
-        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+        echo "Root directory:"
+        ls -R
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v2
+    - name: Find .csproj file
+      run: |
+        find . -name "*.csproj"
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Display .NET version
+      run: dotnet --version
+
+    - name: Restore dependencies
+      run: |
+        CSPROJ=$(find . -name "*.csproj" | head -n 1)
+        if [ -n "$CSPROJ" ]; then
+          echo "Restoring dependencies for $CSPROJ"
+          dotnet restore "$CSPROJ"
+        else
+          echo "No .csproj file found"
+          exit 1
+        fi
+
+    - name: Build
+      run: |
+        CSPROJ=$(find . -name "*.csproj" | head -n 1)
+        if [ -n "$CSPROJ" ]; then
+          echo "Building $CSPROJ"
+          dotnet build "$CSPROJ" --configuration Release --no-restore
+        else
+          echo "No .csproj file found"
+          exit 1
+        fi
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
       with:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Push Docker image
-      run: |
-        docker push ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        file: ./Dockerfile
+        push: true
+        tags: ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+        cache-from: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/super_new_project:buildcache
+        cache-to: type=registry,ref=${{ secrets.DOCKER_USERNAME }}/super_new_project:buildcache,mode=max
 
     - name: Deploy to DigitalOcean Droplet
-      uses: appleboy/ssh-action@v0.1.6
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.DIGITALOCEAN_HOST }}
         username: ${{ secrets.DIGITALOCEAN_SSH_USER }}
         key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
         passphrase: ${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}
-        port: 22
         script: |
+          echo "Connected successfully"
+          docker --version
           docker pull ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
           docker stop super_new_project || true
           docker rm super_new_project || true
           docker run -d --name super_new_project -p 80:80 ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+
+    - name: Check container status
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DIGITALOCEAN_HOST }}
+        username: ${{ secrets.DIGITALOCEAN_SSH_USER }}
+        key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+        passphrase: ${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}
+        script: |
+          docker ps
+          docker logs super_new_project

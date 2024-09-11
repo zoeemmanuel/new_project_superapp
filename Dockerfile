@@ -5,10 +5,10 @@ EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["super_new_project_blazor_wasm/Super_new_project.csproj", "super_new_project_blazor_wasm/"]
-RUN dotnet restore "super_new_project_blazor_wasm/Super_new_project.csproj"
+COPY ["super_new_project_blazor_wasm/Super_new_project/Super_new_project.csproj", "super_new_project_blazor_wasm/Super_new_project/"]
+RUN dotnet restore "super_new_project_blazor_wasm/Super_new_project/Super_new_project.csproj"
 COPY . .
-WORKDIR "/src/super_new_project_blazor_wasm"
+WORKDIR "/src/super_new_project_blazor_wasm/Super_new_project"
 RUN dotnet build "Super_new_project.csproj" -c Release -o /app/build
 
 FROM build AS publish

@@ -1,27 +1,35 @@
-name: Sync main to master
+name: Sync Main and Master
 
 on:
   push:
     branches:
-      - main
-  workflow_run:
-    workflows: [".NET"]
-    types:
-      - completed
+      - main  # Triggered when AppBuilder pushes to main
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
-  create-pull-request:
+  sync-branches:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
-      - name: Create Pull Request
+          fetch-depth: 0  # Fetches all history for all branches and tags
+
+      - name: Configure Git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+
+      - name: Sync master with main
+        run: |
+          git checkout master
+          git merge origin/main
+          git push origin master
+
+      - name: Create Pull Request (master to main)
         uses: repo-sync/pull-request@v2
         with:
-          source_branch: "main"
-          destination_branch: "master"
-          pr_title: "Sync: Main to Master"
-          pr_body: "Automated PR to sync changes from main to master"
+          source_branch: "master"
+          destination_branch: "main"
+          pr_title: "Sync: Merge master into main"
+          pr_body: "This PR syncs changes from master (where manual work is done) into main (where AppBuilder pushes changes)."
           github_token: ${{ secrets.PAT }}

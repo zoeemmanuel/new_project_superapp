@@ -1,20 +1,26 @@
-# Use the official image as a parent image
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
-WORKDIR /app
-EXPOSE 80
-
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["super_new_project_blazor_wasm/Super_new_project/Super_new_project.csproj", "super_new_project_blazor_wasm/Super_new_project/"]
-RUN dotnet restore "super_new_project_blazor_wasm/Super_new_project/Super_new_project.csproj"
+
+# Copy Nuget.config
+COPY ["Nuget.config", "."]
+
+# Copy csproj and restore as distinct layers
+COPY ["Super_new_project/Super_new_project.csproj", "Super_new_project/"]
+
+# Restore dependencies
+RUN dotnet restore "Super_new_project/Super_new_project.csproj" --configfile "./Nuget.config"
+
+# Copy everything else and build
 COPY . .
-WORKDIR "/src/super_new_project_blazor_wasm/Super_new_project"
+WORKDIR "/src/Super_new_project"
 RUN dotnet build "Super_new_project.csproj" -c Release -o /app/build
 
+# Publish the application
 FROM build AS publish
 RUN dotnet publish "Super_new_project.csproj" -c Release -o /app/publish
 
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Super_new_project.dll"]
+# Final stage / image
+FROM nginx:alpine
+WORKDIR /usr/share/nginx/html
+COPY --from=publish /app/publish/wwwroot .
+COPY nginx.conf /etc/nginx/nginx.conf

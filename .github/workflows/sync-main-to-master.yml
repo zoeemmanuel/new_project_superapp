@@ -24,4 +24,4 @@ jobs:
           destination_branch: "master"
           pr_title: "Sync: Main to Master"
           pr_body: "Automated PR to sync changes from main to master"
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PAT }}

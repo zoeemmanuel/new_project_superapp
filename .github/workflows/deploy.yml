@@ -1,0 +1,52 @@
+name: Deploy to DigitalOcean Droplet
+on:
+  push:
+    branches: [ main, master ]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+    - name: Build Docker image
+      run: |
+        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+    - name: Clear Docker config cache (before login)
+      run: |
+        rm -rf ~/.docker/config.json
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v3 
+      with:
+        registry: https://index.docker.io/v1/
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+    - name: Clear Docker config cache (after login)
+      run: |
+        rm -rf ~/.docker/config.json
+    - name: Push Docker image
+      run: |
+        docker push ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+    - name: Deploy to DigitalOcean Droplet
+      uses: appleboy/ssh-action@v0.1.6
+      with:
+        host: ${{ secrets.DIGITALOCEAN_HOST }}
+        username: ${{ secrets.DIGITALOCEAN_SSH_USER }}
+        key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+        passphrase: ${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}
+        port: 22
+        script: |
+          docker pull ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+          docker stop super_new_project || true
+          docker rm super_new_project || true
+          docker run -d --name super_new_project -p 80:80 ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+    - name: Check container status
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.DIGITALOCEAN_HOST }}
+        username: ${{ secrets.DIGITALOCEAN_SSH_USER }}
+        key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+        passphrase: ${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}
+        script: |
+          docker ps
+          docker logs super_new_project

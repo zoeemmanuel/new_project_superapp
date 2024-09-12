@@ -1,14 +1,14 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy Nuget.config
-COPY ["Nuget.config", "."]
+# Copy Nuget.Config
+COPY ["Nuget.Config", "."]
 
 # Copy csproj and restore as distinct layers
 COPY ["Super_new_project/Super_new_project.csproj", "Super_new_project/"]
 
 # Restore dependencies
-RUN dotnet restore "Super_new_project/Super_new_project.csproj" --configfile "./Nuget.config"
+RUN dotnet restore "Super_new_project/Super_new_project.csproj" --configfile "./Nuget.Config"
 
 # Copy everything else and build
 COPY . .

@@ -7,6 +7,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: zoeemmanuel/super_new_project:latest
     steps:
       - name: Checkout main
         uses: actions/checkout@v4
@@ -19,35 +21,22 @@ jobs:
           ref: master
           path: master-branch
 
-      - name: List directory contents
-        run: |
-          echo "Main branch contents:"
-          ls -la main-branch
-          echo "Master branch contents:"
-          ls -la master-branch
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
-      - name: Build Docker image
-        run: |
-          docker build ./master-branch -f ./master-branch/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
-
-      - name: Clear Docker config cache (before login)
-        run: rm -rf ~/.docker/config.json
 
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          registry: https://index.docker.io/v1/
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Clear Docker config cache (after login)
-        run: rm -rf ~/.docker/config.json
-
-      - name: Push Docker image
-        run: docker push ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          context: ./master-branch
+          file: ./master-branch/Dockerfile
+          push: true
+          tags: ${{ env.DOCKER_IMAGE }}
 
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@v0.1.6
@@ -58,10 +47,10 @@ jobs:
           passphrase: ${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}
           port: 22
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+            docker pull ${{ env.DOCKER_IMAGE }}
             docker stop super_new_project || true
             docker rm super_new_project || true
-            docker run -d --name super_new_project -p 80:80 ${{ secrets.DOCKER_USERNAME }}/super_new_project:latest
+            docker run -d --name super_new_project -p 80:80 ${{ env.DOCKER_IMAGE }}
 
       - name: Check container status
         uses: appleboy/ssh-action@master

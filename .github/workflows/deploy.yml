@@ -39,41 +39,6 @@ jobs:
           tags: ${{ env.DOCKER_IMAGE }}
 
 
-- name: Verify SSH Configuration
-  run: |
-    echo "Checking SSH key..."
-    if [ -n "${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}" ]; then
-      echo "SSH private key is set"
-      echo "First few characters of the key: ${${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}:0:10}..."
-    else
-      echo "SSH private key is not set"
-    fi
-
-    echo "Checking SSH passphrase..."
-    if [ -n "${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}" ]; then
-      echo "SSH passphrase is set"
-      echo "Length of passphrase: ${#${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}}"
-    else
-      echo "SSH passphrase is not set"
-    fi
-
-    echo "Checking DigitalOcean host..."
-    if [ -n "${{ secrets.DIGITALOCEAN_HOST }}" ]; then
-      echo "DigitalOcean host is set"
-      echo "Host: ${{ secrets.DIGITALOCEAN_HOST }}"
-    else
-      echo "DigitalOcean host is not set"
-    fi
-
-    echo "Checking SSH user..."
-    if [ -n "${{ secrets.DIGITALOCEAN_SSH_USER }}" ]; then
-      echo "SSH user is set"
-      echo "User: ${{ secrets.DIGITALOCEAN_SSH_USER }}"
-    else
-      echo "SSH user is not set"
-    fi
-
-
       - name: Deploy to DigitalOcean Droplet
         uses: appleboy/ssh-action@v0.1.6
         with:

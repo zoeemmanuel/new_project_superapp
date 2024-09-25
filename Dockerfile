@@ -2,26 +2,30 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy the NuGet.Config file
-COPY Nuget.Config ./
+# Copy the solution file
+COPY *.sln .
+COPY Nuget.Config .
 
-# Copy the project files
-COPY Super_new_project ./
-
-# Debug: Output the contents of Nuget.Config (remove sensitive info)
-RUN cat Nuget.Config | sed 's/\(ClearTextPassword\)="[^"]*"/\1="REDACTED"/g'
+# Copy the main project
+COPY Super_new_project/*.csproj Super_new_project/
+COPY TestSuper_new_project/*.csproj TestSuper_new_project/
 
 # Restore NuGet packages
 RUN dotnet restore --configfile Nuget.Config
 
-# Build and publish the project
-RUN dotnet publish -c Release -o /app/out
+# Copy the rest of the files
+COPY . .
 
-# Runtime stage
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
-WORKDIR /app
-COPY --from=build /app/out .
+# Publish the application
+WORKDIR "/src/Super_new_project"
+RUN dotnet publish -c Release -o /app/publish
+
+# Serve stage
+FROM nginx:alpine AS final
+WORKDIR /usr/share/nginx/html
+COPY --from=build /app/publish/wwwroot .
+COPY nginx.conf /etc/nginx/nginx.conf
+
 EXPOSE 80
 
-# Use the application's dll as the entrypoint
-ENTRYPOINT ["dotnet", "Super_new_project.dll"]
+CMD ["nginx", "-g", "daemon off;"]

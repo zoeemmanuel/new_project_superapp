@@ -8,34 +8,17 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
+    - uses: actions/checkout@v3
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-
-    - name: Log in to DigitalOcean Container Registry
+    - name: Log in to DO Container Registry
       run: doctl registry login --expiry-seconds 600
-
-    - name: Build Docker image
+    - name: Build and push
       env:
         REGISTRY: registry.digitalocean.com/newprojectsuperapp
         IMAGE_NAME: myapp
-        TAG: ${{ github.sha }}
       run: |
-        docker build -t $REGISTRY/$IMAGE_NAME:$TAG .
-        echo "Built image: $REGISTRY/$IMAGE_NAME:$TAG"
-
-    - name: Push Docker image
-      env:
-        REGISTRY: registry.digitalocean.com/newprojectsuperapp
-        IMAGE_NAME: myapp
-        TAG: ${{ github.sha }}
-      run: |
-        docker push $REGISTRY/$IMAGE_NAME:$TAG
-        echo "Pushed image: $REGISTRY/$IMAGE_NAME:$TAG"
-
-    - name: Print image details
-      run: echo "Image pushed: registry.digitalocean.com/newprojectsuperapp/myapp:${{ github.sha }}"
+        docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} .
+        docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}

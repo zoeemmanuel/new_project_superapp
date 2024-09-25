@@ -2,7 +2,7 @@ name: Docker Build and Push to DigitalOcean
 
 on:
   push:
-    branches: [ main ]  # Adjust this if your main branch has a different name
+    branches: [ master ]
 
 jobs:
   build-and-push:
@@ -10,9 +10,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
 
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
@@ -22,12 +19,14 @@ jobs:
     - name: Log in to DigitalOcean Container Registry
       run: doctl registry login --expiry-seconds 600
 
-    - name: Build and push
-      uses: docker/build-push-action@v4
-      with:
-        context: .
-        push: true
-        tags: registry.digitalocean.com/newprojectsuperapp/myapp:${{ github.sha }}
+    - name: Build and push Docker image
+      env:
+        REGISTRY: registry.digitalocean.com/newprojectsuperapp
+        IMAGE_NAME: myapp
+        TAG: ${{ github.sha }}
+      run: |
+        docker build -t $REGISTRY/$IMAGE_NAME:$TAG .
+        docker push $REGISTRY/$IMAGE_NAME:$TAG
 
     - name: Print image details
       run: echo "Image pushed: registry.digitalocean.com/newprojectsuperapp/myapp:${{ github.sha }}"

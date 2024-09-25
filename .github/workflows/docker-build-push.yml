@@ -1,11 +1,11 @@
-name: Docker Build and Push to DigitalOcean
+name: Docker Build, Push, and Deploy to DigitalOcean
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
-  build-and-push:
+  build-push-deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -22,3 +22,16 @@ jobs:
       run: |
         docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} .
         docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
+    - name: Deploy to DigitalOcean Droplet
+      env:
+        HOST: ${{ secrets.DROPLET_HOST }}
+        USERNAME: ${{ secrets.DROPLET_USERNAME }}
+        PRIVATE_KEY: ${{ secrets.DROPLET_SSH_KEY }}
+      run: |
+        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+        ssh -o StrictHostKeyChecking=no -i private_key ${USERNAME}@${HOST} '
+          docker pull registry.digitalocean.com/newprojectsuperapp/myapp:${{ github.sha }} &&
+          docker stop myapp || true &&
+          docker rm myapp || true &&
+          docker run -d --name myapp -p 80:80 registry.digitalocean.com/newprojectsuperapp/myapp:${{ github.sha }}
+        '

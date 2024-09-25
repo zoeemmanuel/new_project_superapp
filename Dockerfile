@@ -8,6 +8,9 @@ COPY Nuget.Config ./
 # Copy the project files
 COPY Super_new_project ./
 
+# Debug: Output the contents of Nuget.Config (remove sensitive info)
+RUN cat Nuget.Config | sed 's/\(ClearTextPassword\)="[^"]*"/\1="REDACTED"/g'
+
 # Restore NuGet packages
 RUN dotnet restore --configfile Nuget.Config
 
@@ -20,8 +23,5 @@ WORKDIR /app
 COPY --from=build /app/out .
 EXPOSE 80
 
-# List the contents of the /app directory
-RUN ls -la /app
-
-# Use the application's dll as the entrypoint instead of bash
+# Use the application's dll as the entrypoint
 ENTRYPOINT ["dotnet", "Super_new_project.dll"]

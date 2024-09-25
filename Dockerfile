@@ -1,8 +1,17 @@
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
+
+# Copy the NuGet.Config file
+COPY Nuget.Config ./
+
+# Copy the project files
 COPY Super_new_project ./
-RUN dotnet restore
+
+# Restore NuGet packages
+RUN dotnet restore --configfile Nuget.Config
+
+# Build and publish the project
 RUN dotnet publish -c Release -o /app/out
 
 # Runtime stage
@@ -14,5 +23,5 @@ EXPOSE 80
 # List the contents of the /app directory
 RUN ls -la /app
 
-# Use a shell as the entrypoint for debugging
-ENTRYPOINT ["/bin/bash"]
+# Use the application's dll as the entrypoint instead of bash
+ENTRYPOINT ["dotnet", "Super_new_project.dll"]

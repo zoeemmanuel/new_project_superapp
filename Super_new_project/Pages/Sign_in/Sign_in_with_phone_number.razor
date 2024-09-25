@@ -1,9 +1,6 @@
 @page "/"
 @page "/sign_in/sign_in_with_phone_number"
-@using Northwind
-@using Models.Northwind
 @inject NavigationManager NavigationManager
-@inject INorthwindService NorthwindService
 
 <div class="row-layout sign-in-with-phone-number-container">
     <div class="column-layout group">
@@ -18,28 +15,25 @@
                 </p>
             </div>
             <div class="column-layout group_2">
-                @foreach (var item in _northwindCategories)
-                {
-                    <IgbSelect Outlined="true" Placeholder="Australia (+61)" class="user-input" sign_in_with_phone_number-scope>
-                        <span slot="prefix">
-                            <span class="material-icons icon">
-                                public
-                            </span>
+                <IgbSelect Outlined="true" Placeholder="Australia (+61)" class="user-input" sign_in_with_phone_number-scope>
+                    <span slot="prefix">
+                        <span class="material-icons icon">
+                            public
                         </span>
-                        <IgbSelectItem Value="Option">
-                            United Kingdom (+44)
-                        </IgbSelectItem>
-                        <IgbSelectItem Value="+61">
-                            Australia (+61)
-                        </IgbSelectItem>
-                        <IgbSelectItem Value="Option">
-                            Indonesia (+62)
-                        </IgbSelectItem>
-                        <IgbSelectItem Value="Option">
-                            Singapore (+65)
-                        </IgbSelectItem>
-                    </IgbSelect>
-                }
+                    </span>
+                    <IgbSelectItem Value="Option">
+                        United Kingdom (+44)
+                    </IgbSelectItem>
+                    <IgbSelectItem Value="+61">
+                        Australia (+61)
+                    </IgbSelectItem>
+                    <IgbSelectItem Value="Option">
+                        Indonesia (+62)
+                    </IgbSelectItem>
+                    <IgbSelectItem Value="Option">
+                        Singapore (+65)
+                    </IgbSelectItem>
+                </IgbSelect>
                 <IgbInput DisplayType="InputType.Tel" Placeholder="Phone number" Required="true" Outlined="true" class="user-input" sign_in_with_phone_number-scope>
                     <span slot="prefix">
                         <span class="material-icons icon">
@@ -57,16 +51,9 @@
 </div>
 
 @code {
-    private List<CategoriesType> _northwindCategories = new();
 
     public void Navigate(string path)
     {
         NavigationManager.NavigateTo(path);
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        _northwindCategories = await NorthwindService.GetCategories();
-        await base.OnInitializedAsync();
     }
 }

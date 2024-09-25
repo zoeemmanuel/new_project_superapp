@@ -18,20 +18,24 @@ jobs:
     - name: Build and push
       env:
         REGISTRY: registry.digitalocean.com/newprojectsuperapp
-        IMAGE_NAME: myapp
+        IMAGE_NAME: ${{ secrets.DO_IMAGE_NAME }}
       run: |
         docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} .
         docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
     - name: Deploy to DigitalOcean Droplet
       env:
-        HOST: ${{ secrets.DROPLET_HOST }}
-        USERNAME: ${{ secrets.DROPLET_USERNAME }}
-        PRIVATE_KEY: ${{ secrets.DROPLET_SSH_KEY }}
+        HOST: ${{ secrets.DIGITALOCEAN_HOST }}
+        USERNAME: ${{ secrets.DIGITALOCEAN_SSH_USER }}
+        PRIVATE_KEY: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+        SSH_PASSPHRASE: ${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -o StrictHostKeyChecking=no -i private_key ${USERNAME}@${HOST} '
-          docker pull registry.digitalocean.com/newprojectsuperapp/myapp:${{ github.sha }} &&
-          docker stop myapp || true &&
-          docker rm myapp || true &&
-          docker run -d --name myapp -p 80:80 registry.digitalocean.com/newprojectsuperapp/myapp:${{ github.sha }}
+        ssh-agent bash -c '
+          ssh-add -P "$SSH_PASSPHRASE" private_key
+          ssh -o StrictHostKeyChecking=no ${USERNAME}@${HOST} "
+            docker pull registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }} &&
+            docker stop ${{ secrets.DO_IMAGE_NAME }} || true &&
+            docker rm ${{ secrets.DO_IMAGE_NAME }} || true &&
+            docker run -d --name ${{ secrets.DO_IMAGE_NAME }} -p 80:80 registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }}
+          "
         '

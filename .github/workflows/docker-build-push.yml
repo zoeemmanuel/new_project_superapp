@@ -2,7 +2,7 @@ name: Docker Build and Push to DigitalOcean
 
 on:
   push:
-    branches: [ master ] 
+    branches: [ main ]  # Adjust this if your main branch has a different name
 
 jobs:
   build-and-push:

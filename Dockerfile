@@ -1,7 +1,7 @@
 # Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY NewProjectWASM_UI_V1 ./
+COPY Super_new_project ./
 RUN dotnet restore
 RUN dotnet publish -c Release -o /app/out
 

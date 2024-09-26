@@ -1,20 +1,21 @@
 name: Docker Build, Push, and Deploy to DigitalOcean
-
 on:
   push:
     branches: [ master ]
-
 jobs:
   build-push-deploy:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
       with:
         token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+    
     - name: Log in to DO Container Registry
       run: doctl registry login --expiry-seconds 600
+    
     - name: Build and push
       env:
         REGISTRY: registry.digitalocean.com/newprojectsuperapp
@@ -22,6 +23,7 @@ jobs:
       run: |
         docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} .
         docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
+    
     - name: Deploy to DigitalOcean Droplet
       env:
         HOST: ${{ secrets.DIGITALOCEAN_HOST }}
@@ -29,13 +31,14 @@ jobs:
         PRIVATE_KEY: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
         SSH_PASSPHRASE: ${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}
       run: |
-        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh-agent bash -c '
-          ssh-add -P "$SSH_PASSPHRASE" private_key
-          ssh -o StrictHostKeyChecking=no ${USERNAME}@${HOST} "
-            docker pull registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }} &&
-            docker stop ${{ secrets.DO_IMAGE_NAME }} || true &&
-            docker rm ${{ secrets.DO_IMAGE_NAME }} || true &&
-            docker run -d --name ${{ secrets.DO_IMAGE_NAME }} -p 80:80 registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }}
-          "
-        '
+        echo "$PRIVATE_KEY" > private_key
+        chmod 600 private_key
+        eval $(ssh-agent -s)
+        echo "$SSH_PASSPHRASE" | ssh-add -p private_key
+        ssh -o StrictHostKeyChecking=no ${USERNAME}@${HOST} "
+          docker pull registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }} &&
+          docker stop ${{ secrets.DO_IMAGE_NAME }} || true &&
+          docker rm ${{ secrets.DO_IMAGE_NAME }} || true &&
+          docker run -d --name ${{ secrets.DO_IMAGE_NAME }} -p 80:80 registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }}
+        "
+        ssh-agent -k

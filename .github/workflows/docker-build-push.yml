@@ -1,35 +1,14 @@
-name: Docker Build, Push, and Deploy to DigitalOcean
+name: Debug SSH Connection to DigitalOcean
 on:
   push:
     branches: [ master ]
 jobs:
-  build-push-deploy:
+  debug-ssh:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
     
-    - name: Install necessary tools
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y expect
-    
-    - name: Install doctl
-      uses: digitalocean/action-doctl@v2
-      with:
-        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-    
-    - name: Log in to DO Container Registry
-      run: doctl registry login --expiry-seconds 600
-    
-    - name: Build and push
-      env:
-        REGISTRY: registry.digitalocean.com/newprojectsuperapp
-        IMAGE_NAME: ${{ secrets.DO_IMAGE_NAME }}
-      run: |
-        docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} .
-        docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
-    
-    - name: Deploy to DigitalOcean Droplet
+    - name: Setup SSH Debug Environment
       env:
         HOST: ${{ secrets.DIGITALOCEAN_HOST }}
         USERNAME: ${{ secrets.DIGITALOCEAN_SSH_USER }}
@@ -39,15 +18,22 @@ jobs:
         mkdir -p ~/.ssh
         echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
+        ssh-keygen -y -f ~/.ssh/id_rsa > ~/.ssh/id_rsa.pub
+        echo "Private key fingerprint:"
+        ssh-keygen -l -f ~/.ssh/id_rsa
+        echo "Public key:"
+        cat ~/.ssh/id_rsa.pub
+        
+    - name: Attempt SSH Connection
+      env:
+        HOST: ${{ secrets.DIGITALOCEAN_HOST }}
+        USERNAME: ${{ secrets.DIGITALOCEAN_SSH_USER }}
+      run: |
         ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
-        expect << EOF
-        spawn ssh -i ~/.ssh/id_rsa ${USERNAME}@${HOST} "
-          docker pull registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }} &&
-          docker stop ${{ secrets.DO_IMAGE_NAME }} || true &&
-          docker rm ${{ secrets.DO_IMAGE_NAME }} || true &&
-          docker run -d --name ${{ secrets.DO_IMAGE_NAME }} -p 80:80 registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }}
-        "
-        expect "Enter passphrase for key '/home/runner/.ssh/id_rsa':"
-        send "$SSH_PASSPHRASE\r"
-        expect eof
-        EOF
+        ssh -v -i ~/.ssh/id_rsa ${USERNAME}@${HOST} "echo 'SSH connection successful'"
+
+    - name: Check SSH Debug Output
+      if: failure()
+      run: |
+        echo "SSH connection failed. Please check the verbose output above for more details."
+        echo "Ensure that the public key is properly added to authorized_keys on the DigitalOcean droplet."

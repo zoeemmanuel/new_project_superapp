@@ -1,79 +1,24 @@
-name: Docker Build, Push, Debug, and Deploy to DigitalOcean
-on:
-  push:
-    branches: [ master ]
-
-jobs:
-  build-push-debug-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-
-    - name: Install doctl
-      uses: digitalocean/action-doctl@v2
-      with:
-        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-
-    - name: Log in to DO Container Registry
-      run: doctl registry login --expiry-seconds 600
-
-    - name: Build and push
+- name: Setup SSH Agent
       env:
-        REGISTRY: registry.digitalocean.com/newprojectsuperapp
-        IMAGE_NAME: super-new-project
+        SSH_PRIVATE_KEY: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+        SSH_KEY_PASSPHRASE: ${{ secrets.SSH_KEY_PASSPHRASE }}
       run: |
-        docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} .
-        docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
-
-    - name: Verify SSH key
-      env:
-        PRIVATE_KEY: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
-      run: |
-        echo "$PRIVATE_KEY" > private_key
-        chmod 600 private_key
-        echo "First line of private key:"
-        head -n 1 private_key
-        echo "Last line of private key:"
-        tail -n 1 private_key
-        echo "Key fingerprint:"
-        ssh-keygen -lf private_key
-
-    - name: Display SSH connection info
-      env:
-        HOST: ${{ secrets.DIGITALOCEAN_HOST }}
-        USERNAME: ${{ secrets.DIGITALOCEAN_SSH_USER }}
-      run: |
-        echo "SSH connection command that would be used:"
-        echo "ssh -i private_key ${USERNAME}@${HOST}"
-        echo "SSH client version:"
-        ssh -V
-
-    - name: Attempt SSH Connection
-      env:
-        HOST: ${{ secrets.DIGITALOCEAN_HOST }}
-        USERNAME: ${{ secrets.DIGITALOCEAN_SSH_USER }}
-      run: |
-        ssh -v -o StrictHostKeyChecking=no -i private_key ${USERNAME}@${HOST} "echo 'SSH connection successful'"
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        eval $(ssh-agent -s)
+        echo "$SSH_KEY_PASSPHRASE" | ssh-add ~/.ssh/id_rsa
 
     - name: Deploy to DigitalOcean Droplet
-      if: success()
       env:
         HOST: ${{ secrets.DIGITALOCEAN_HOST }}
         USERNAME: ${{ secrets.DIGITALOCEAN_SSH_USER }}
         REGISTRY: registry.digitalocean.com/newprojectsuperapp
         IMAGE_NAME: super-new-project
       run: |
-        ssh -v -o StrictHostKeyChecking=no -i private_key ${USERNAME}@${HOST} "
+        ssh -o StrictHostKeyChecking=no ${USERNAME}@${HOST} "
           docker pull $REGISTRY/$IMAGE_NAME:${{ github.sha }} &&
           docker stop $IMAGE_NAME || true &&
           docker rm $IMAGE_NAME || true &&
           docker run -d --name $IMAGE_NAME -p 80:80 $REGISTRY/$IMAGE_NAME:${{ github.sha }}
         "
-
-    - name: Debugging Info
-      if: failure()
-      run: |
-        echo "SSH connection failed. Please check the verbose output above for more details."
-        echo "Ensure that the public key is properly added to authorized_keys on the DigitalOcean droplet."
-        echo "Verify that the USERNAME and HOST are correct."
-        echo "Check if the DigitalOcean droplet's firewall allows SSH connections from GitHub Actions IP ranges."

@@ -8,10 +8,10 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: Install sshpass
+    - name: Install necessary tools
       run: |
         sudo apt-get update
-        sudo apt-get install -y sshpass
+        sudo apt-get install -y expect
     
     - name: Install doctl
       uses: digitalocean/action-doctl@v2
@@ -38,9 +38,15 @@ jobs:
       run: |
         echo "$PRIVATE_KEY" > private_key
         chmod 600 private_key
-        sshpass -p "$SSH_PASSPHRASE" ssh -o StrictHostKeyChecking=no -i private_key ${USERNAME}@${HOST} "
+        ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
+        expect << EOF
+        spawn ssh -i private_key ${USERNAME}@${HOST} "
           docker pull registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }} &&
           docker stop ${{ secrets.DO_IMAGE_NAME }} || true &&
           docker rm ${{ secrets.DO_IMAGE_NAME }} || true &&
           docker run -d --name ${{ secrets.DO_IMAGE_NAME }} -p 80:80 registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }}
         "
+        expect "Enter passphrase for key 'private_key':"
+        send "$SSH_PASSPHRASE\r"
+        expect eof
+        EOF

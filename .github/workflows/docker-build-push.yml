@@ -36,17 +36,18 @@ jobs:
         PRIVATE_KEY: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
         SSH_PASSPHRASE: ${{ secrets.DIGITALOCEAN_SSH_PASSPHRASE }}
       run: |
-        echo "$PRIVATE_KEY" > private_key
-        chmod 600 private_key
+        mkdir -p ~/.ssh
+        echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
         ssh-keyscan -H $HOST >> ~/.ssh/known_hosts
         expect << EOF
-        spawn ssh -i private_key ${USERNAME}@${HOST} "
+        spawn ssh -i ~/.ssh/id_rsa ${USERNAME}@${HOST} "
           docker pull registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }} &&
           docker stop ${{ secrets.DO_IMAGE_NAME }} || true &&
           docker rm ${{ secrets.DO_IMAGE_NAME }} || true &&
           docker run -d --name ${{ secrets.DO_IMAGE_NAME }} -p 80:80 registry.digitalocean.com/newprojectsuperapp/${{ secrets.DO_IMAGE_NAME }}:${{ github.sha }}
         "
-        expect "Enter passphrase for key 'private_key':"
+        expect "Enter passphrase for key '/home/runner/.ssh/id_rsa':"
         send "$SSH_PASSPHRASE\r"
         expect eof
         EOF

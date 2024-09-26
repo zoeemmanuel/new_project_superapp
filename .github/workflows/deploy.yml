@@ -19,10 +19,7 @@ jobs:
 
     - name: List and delete old images
       run: |
-        # List tags, sort by date, keep the latest 5
         TAGS_TO_DELETE=$(doctl registry repository list-tags newprojectsuperapp/super-new-project --format Tag --no-header | sort -r | tail -n +6)
-        
-        # Delete old tags
         for TAG in $TAGS_TO_DELETE
         do
           echo "Deleting tag: $TAG"
@@ -37,7 +34,7 @@ jobs:
         docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} .
         docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
 
-    - name: Setup SSH Agent
+    - name: Setup SSH
       env:
         SSH_PRIVATE_KEY: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
       run: |

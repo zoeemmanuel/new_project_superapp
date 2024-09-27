@@ -1,66 +1,20 @@
-name: Docker Build, Push, and Deploy to DigitalOcean
+name: SSH Test
 on:
   push:
     branches: [ master ]
 
 jobs:
-  build-push-deploy:
+  ssh-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-
-      - name: Log in to DO Container Registry
-        run: doctl registry login --expiry-seconds 600
-
-      - name: List and delete old images
-        run: |
-          TAGS_TO_DELETE=$(doctl registry repository list-tags newprojectsuperapp/super-new-project --format Tag --no-header | sort -r | tail -n +6)
-          for TAG in $TAGS_TO_DELETE
-          do
-            echo "Deleting tag: $TAG"
-            doctl registry repository delete-tag newprojectsuperapp/super-new-project $TAG --force
-          done
-
-      - name: Build and push
-        env:
-          REGISTRY: registry.digitalocean.com/newprojectsuperapp
-          IMAGE_NAME: super-new-project
-        run: |
-          docker build -t $REGISTRY/$IMAGE_NAME:${{ github.sha }} .
-          docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
-
-      - name: Verify SSH connectivity
-        env:
-          HOST: ${{ secrets.DIGITALOCEAN_HOST }}
-        run: |
-          ssh-keyscan $HOST >> ~/.ssh/known_hosts || echo "Error with ssh-keyscan: $?"
-
-      - name: Deploy to DigitalOcean Droplet
+      - name: SSH into server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DIGITALOCEAN_HOST }}
           username: ${{ secrets.DIGITALOCEAN_SSH_USER }}
           key: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
           script: |
-            docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} &&
-            docker stop ${{ env.IMAGE_NAME }} || true &&
-            docker rm ${{ env.IMAGE_NAME }} || true &&
-            docker run -d --name ${{ env.IMAGE_NAME }} -p 80:80 ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-
-      - name: Verify Deployment
-        env:
-          HOST: ${{ secrets.DIGITALOCEAN_HOST }}
-        run: |
-          echo "Waiting for deployment to stabilize..."
-          sleep 30
-          if curl -sSf http://$HOST > /dev/null; then
-            echo "Deployment successful! Application is responding."
-          else
-            echo "Deployment may have failed. Application is not responding."
-            exit 1
-          fi
+            hostname  # Just a simple command to test the connection

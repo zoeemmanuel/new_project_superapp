@@ -39,8 +39,10 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
         run: |
           mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           eval $(ssh-agent -s)
-          echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - || echo "Error adding key: $?" 
+          ssh-add ~/.ssh/id_rsa || echo "Error adding key: $?"
 
       - name: Deploy to DigitalOcean Droplet
         env:

@@ -42,9 +42,6 @@ jobs:
           mkdir -p "$TMP_SSH_DIR"
           echo "$SSH_PRIVATE_KEY" | tr -d '\r' > "$TMP_SSH_DIR/id_rsa"
           chmod 600 "$TMP_SSH_DIR/id_rsa"
-          eval $(ssh-agent -a "$TMP_SSH_DIR/ssh_agent.sock")
-          ssh-add "$TMP_SSH_DIR/id_rsa" || echo "Error adding key: $?"
-          echo "SSH_AUTH_SOCK=$TMP_SSH_DIR/ssh_agent.sock" >> $GITHUB_ENV 
 
       - name: Verify SSH connectivity
         env:
@@ -58,8 +55,9 @@ jobs:
           USERNAME: ${{ secrets.DIGITALOCEAN_SSH_USER }}
           REGISTRY: registry.digitalocean.com/newprojectsuperapp
           IMAGE_NAME: super-new-project
+          TMP_SSH_DIR: ${{ runner.temp }}/ssh 
         run: |
-          ssh -vvv -o StrictHostKeyChecking=no ${USERNAME}@${HOST} " 
+          ssh -vvv -o StrictHostKeyChecking=no -i "$TMP_SSH_DIR/id_rsa" ${USERNAME}@${HOST} " 
             docker pull $REGISTRY/$IMAGE_NAME:${{ github.sha }} &&
             docker stop $IMAGE_NAME || true &&
             docker rm $IMAGE_NAME || true &&

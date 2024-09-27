@@ -37,15 +37,20 @@ jobs:
       - name: Setup SSH
         env:
           SSH_PRIVATE_KEY: ${{ secrets.DIGITALOCEAN_SSH_PRIVATE_KEY }}
+          TMP_SSH_DIR: ${{ runner.temp }}/ssh 
         run: |
-          mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
-          eval $(ssh-agent -s)
-          ssh-add ~/.ssh/id_rsa || echo "Error adding key: $?"
+          mkdir -p "$TMP_SSH_DIR"
+          echo "$SSH_PRIVATE_KEY" | tr -d '\r' > "$TMP_SSH_DIR/id_rsa"
+          chmod 600 "$TMP_SSH_DIR/id_rsa"
+          eval $(ssh-agent -a "$TMP_SSH_DIR/ssh_agent.sock")
+          ssh-add "$TMP_SSH_DIR/id_rsa" || echo "Error adding key: $?"
+          echo "SSH_AUTH_SOCK=$TMP_SSH_DIR/ssh_agent.sock" >> $GITHUB_ENV 
 
-      - name: Check id_rsa content  # TEMPORARY - REMOVE AFTER VERIFYING
-        run: cat ~/.ssh/id_rsa     # TEMPORARY - REMOVE AFTER VERIFYING
+      - name: Verify SSH connectivity
+        env:
+          HOST: ${{ secrets.DIGITALOCEAN_HOST }}
+        run: |
+          ssh-keyscan $HOST >> ~/.ssh/known_hosts || echo "Error with ssh-keyscan: $?"
 
       - name: Deploy to DigitalOcean Droplet
         env:

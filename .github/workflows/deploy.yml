@@ -44,6 +44,9 @@ jobs:
           eval $(ssh-agent -s)
           ssh-add ~/.ssh/id_rsa || echo "Error adding key: $?"
 
+      - name: Check id_rsa content  # TEMPORARY - REMOVE AFTER VERIFYING
+        run: cat ~/.ssh/id_rsa     # TEMPORARY - REMOVE AFTER VERIFYING
+
       - name: Deploy to DigitalOcean Droplet
         env:
           HOST: ${{ secrets.DIGITALOCEAN_HOST }}
